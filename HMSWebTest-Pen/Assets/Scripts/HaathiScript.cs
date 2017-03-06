@@ -24,13 +24,13 @@ public class HaathiScript : MonoBehaviour
     public Canvas _haathiCanvas;
     bool isSpeechBubbleVisible = true;
 	// Use this for initialization
-	void Start ()
+	void Start()
     {
         isExecute = false;
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update() 
     {
         //Debug UI
         #if UNITY_EDITOR
