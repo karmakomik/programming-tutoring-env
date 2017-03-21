@@ -52,7 +52,7 @@ public class PenScript : MonoBehaviour
 
         // connect texture to material of GameObject this script is attached to
         GetComponent<Renderer>().material.mainTexture = texture;
-        targetPaintingObject.GetComponent<Renderer>().material.mainTexture = texture;
+        //targetPaintingObject.GetComponent<Renderer>().material.mainTexture = texture;
     }
 
     void setPenColor(Color c)
