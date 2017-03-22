@@ -1,0 +1,28 @@
+********************************************************************************
+*                             Initializing Cubiquity                           *
+********************************************************************************
+[09:42:39, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
+[09:43:20, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
+[09:43:52, Info   ]: Resizing compressed data buffer to 144307bytes. This should only happen once
+[09:43:52, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
+[09:43:53, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensTerrain.vdb'
+[09:45:03, Info   ]: Creating empty voxel database as 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/2d-simplex-noise-1880539892.vdb'
+[09:45:11, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
+[09:45:34, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/36322A6F.vdb'
+[09:46:52, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
+[09:46:57, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/25E01EFB.vdb'
+[09:47:00, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
+[09:47:00, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/12D261F4.vdb'
+[09:47:56, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
+[09:47:58, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/18FF5CBD.vdb'
+[09:48:12, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
+[09:48:13, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/1FD0CDF7.vdb'
+[09:48:22, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
+[09:48:23, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/ImportedCity.vdb'
+[09:48:35, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/ImportedCity.vdb'
+[09:48:38, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/ImportedCity.vdb'
+[09:48:57, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/ImportedCity.vdb'
+[09:51:19, Info   ]: Resizing compressed data buffer to 144307bytes. This should only happen once
+[09:51:19, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/ImportedCity.vdb'
+[09:51:19, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/30372022.vdb'
+[12:46:11, Info   ]: Resizing compressed data buffer to 144307bytes. This should only happen once

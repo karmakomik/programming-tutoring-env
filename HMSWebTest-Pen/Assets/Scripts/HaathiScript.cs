@@ -16,7 +16,7 @@ public class HaathiScript : MonoBehaviour
     GameObject hitBananaObj;
     int gameScore = 0;
     //public GameObject _canvas;
-    public GameObject _browserConnect;
+    //public GameObject _browserConnect;
     public GameObject _pen;
     public GameObject _player;
     public GameObject _thinkBox;
@@ -45,7 +45,7 @@ public class HaathiScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             setHaathiProgrammingFlag(false);
-            _browserConnect.SendMessage("setCodeEditorVisibility", false);
+            //_browserConnect.SendMessage("setCodeEditorVisibility", false);
         }
         
         if (isExecute)
@@ -238,7 +238,7 @@ public class HaathiScript : MonoBehaviour
             else // No more commands left to execute
             {
                 isExecute = false;
-                _browserConnect.SendMessage("setCodeEditorVisibility",false);                
+                //_browserConnect.SendMessage("setCodeEditorVisibility",false);                
             }
         }
 	}
@@ -280,8 +280,8 @@ public class HaathiScript : MonoBehaviour
 
     public void evalBlocklyCode()
     {
-        #if UNITY_EDITOR
-            BrowserConnect.commandsList.Add("penDown");
+#if UNITY_EDITOR || UNITY_ANDROID
+        BrowserConnect.commandsList.Add("penDown");
             BrowserConnect.commandsList.Add("penSetColor #0000ff");
             BrowserConnect.commandsList.Add("moveForward 300");
             BrowserConnect.commandsList.Add("turnAntiClockwise 90");
@@ -311,10 +311,10 @@ public class HaathiScript : MonoBehaviour
            // BrowserConnect.commandsList.Add("moveForward");
             //BrowserConnect.commandsList.Add("turnLeft");
             startExecution(); //isExecute = true;   
-        #endif
-        #if UNITY_WEBGL
+#endif
+#if UNITY_WEBGL
             _browserConnect.SendMessage("evaluateBlocklyCode");            
-        #endif            
+#endif            
     }
 
     void bananaHit(GameObject obj)
@@ -342,7 +342,7 @@ public class HaathiScript : MonoBehaviour
         {
             clickToggle = !clickToggle;
             Debug.Log("Mouse clicked");
-            _browserConnect.SendMessage("setCodeEditorVisibility", clickToggle);
+            //_browserConnect.SendMessage("setCodeEditorVisibility", clickToggle);
             #if !UNITY_EDITOR && UNITY_WEBGL
                 toggleHaathiProgrammingFlag();                
             #endif

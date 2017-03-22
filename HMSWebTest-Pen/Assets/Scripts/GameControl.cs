@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 /*public class GameLevel
 {
@@ -24,10 +25,13 @@ public class GameControl : MonoBehaviour
     public Sprite soundOffSprite;
     public Sprite soundOnSprite;
 
+    public GameObject textCodeArea;
+    bool showTextArea = false;
+
     public GameObject targetCircle;
     //public GameObject selectionCircle;
     public GameObject mainAvatar;
-
+    
     public GameObject targetArrow;
 
     int gameState = 0;
@@ -143,11 +147,27 @@ public class GameControl : MonoBehaviour
         exitPanel.SetActive(status);
     }
 
+    public void toggleTextCodeWindowVisibility()
+    {
+        showTextArea = !showTextArea;
+        textCodeArea.SetActive(showTextArea);
+        /*if (showTextArea)
+        {
+            textCodeArea.GetComponent<InputField>().ActivateInputField();
+            textCodeArea.GetComponent<InputField>().Select();
+        }*/
+    }
+
     public void showSpeechPanel(bool status)
     {
         speechPanel.SetActive(status);
     }
 
+
+    public void loadVisualCodeEditor()
+    {
+        SceneManager.LoadScene(1);
+    }
     bool volStatus = false;
     public void ChangeVolStatus()
     {

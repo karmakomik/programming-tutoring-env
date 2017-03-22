@@ -48,19 +48,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1696654635965302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b58349111745070438952d0f2f842db3, type: 3}
+  m_Script: {fileID: 11500000, guid: c0656c90e8c3da644a8d4d4483737e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   proj: {fileID: 0}
   mask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   exitPanel: {fileID: 0}
   speechPanel: {fileID: 0}
   closeButton: {fileID: 0}
   volButton: {fileID: 0}
-  soundOffSprite: {fileID: 21300000, guid: 57a7179b1fd624f49b2c4bb1d2e476bf, type: 3}
-  soundOnSprite: {fileID: 21300000, guid: ca9ee5f56ee161c4f80cc0a752adc011, type: 3}
+  soundOffSprite: {fileID: 0}
+  soundOnSprite: {fileID: 0}
   targetCircle: {fileID: 0}
   mainAvatar: {fileID: 0}
   targetArrow: {fileID: 0}

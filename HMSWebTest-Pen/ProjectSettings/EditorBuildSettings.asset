@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/hms.unity
   - enabled: 0
     path: Assets/Scenes/artsandbox.unity
+  - enabled: 1
+    path: Assets/Scenes/VisualCode.unity
