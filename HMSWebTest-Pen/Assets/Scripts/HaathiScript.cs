@@ -82,7 +82,7 @@ public class HaathiScript : MonoBehaviour
 
                     if (lerpStepFactor <= 1.0f)
                     {
-                        lerpStepFactor += 0.01f;
+                        lerpStepFactor += 3*Time.deltaTime; //0.01f;
                     }
                     else //Movement animation is done
                     {
@@ -263,7 +263,7 @@ public class HaathiScript : MonoBehaviour
 
         if (lerpStepFactor <= 1.0f)
         {
-            lerpStepFactor += 0.01f;
+            lerpStepFactor += 4*Time.deltaTime;
         }
         else
         {

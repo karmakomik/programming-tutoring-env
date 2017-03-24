@@ -26,6 +26,14 @@ public class ClickController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Escape))
         {
+            GameObject obj = GameObject.Find("whenRun");
+            GameObject child = obj.GetComponent<DragScript>().getChildBlockObj();
+            Debug.Log("printing connected children");
+            while (child != null)
+            {
+                Debug.Log(child.name);
+                child = child.GetComponent<DragScript>().getChildBlockObj();
+            }
             SceneManager.LoadScene(0);
         }
 
