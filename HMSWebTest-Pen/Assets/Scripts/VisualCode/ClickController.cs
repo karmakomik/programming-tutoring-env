@@ -42,7 +42,7 @@ public class ClickController : MonoBehaviour
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitObj))
             {
-                //Debug.Log("Object hit!" + hitObj.transform.name);
+                Debug.Log("Object hit!" + hitObj.transform.name);
                 isMouseUp = false;
                 draggedObjName = hitObj.transform.name;
                 /*if (OnClick != null)
@@ -61,5 +61,10 @@ public class ClickController : MonoBehaviour
                 OnMouseUp(hitObj);
             }*/
         }
+    }
+
+    public void clickPenCategory()
+    {
+        Debug.Log("clicked pen category!");
     }
 }

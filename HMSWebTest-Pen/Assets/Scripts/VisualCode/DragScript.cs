@@ -19,6 +19,7 @@ public class DragScript : MonoBehaviour
     Vector3[] currMeshVerts;
     bool isContainElongPt = false;
     Vector3 elongPt;
+    public bool isOriginBlock = false;
     private float intraRepeatBlockDistance = 0.015f; // Hardcoded based on 3D design 
 
     float mouseClickOffsetX, mouseClickOffsetY;
@@ -125,6 +126,18 @@ public class DragScript : MonoBehaviour
         //Move object using offset which is diff b/w mouse click pos and transform pos
         mouseClickOffsetX = Camera.main.WorldToScreenPoint(gameObject.transform.position).x - Input.mousePosition.x;
         mouseClickOffsetY = Camera.main.WorldToScreenPoint(gameObject.transform.position).y - Input.mousePosition.y;
+
+        if (isOriginBlock)
+        {
+            Debug.Log("Creating new block copy");
+            GameObject clone = Instantiate((GameObject)Resources.Load("Prefabs/VisualBlocks/" + gameObject.name), gameObject.transform.position, gameObject.transform.rotation);
+            clone.name = gameObject.name; //Instead of the clone name being gameObject.name + "(clone)"
+
+            //Now swap the isOriginBlock flags in the clone so that the clone remains in place of the original
+            isOriginBlock = false; 
+            clone.GetComponent<DragScript>().isOriginBlock = true;
+        }
+
     }
 
     public GameObject getChildBlockObj()
@@ -236,14 +249,14 @@ public class DragScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        /*if (Input.GetKeyDown("space"))
         {
             if (flag1)
             {
                 float heightOfInsertedBlocks = getHeightOfBlocks(gameObject);
                 Debug.Log("Height of inserted blocks" + heightOfInsertedBlocks);
             }
-        }
+        }*/
 
         // Debug.Log("z : " + z );
         //transform.rotation = Camera.main.transform.localRotation;
