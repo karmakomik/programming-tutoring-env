@@ -21,12 +21,14 @@ public class DragScript : MonoBehaviour
     Vector3 elongPt;
     public bool isOriginBlock = false;
     private float intraRepeatBlockDistance = 0.015f; // Hardcoded based on 3D design 
+    GameObject mainCam;
 
     float mouseClickOffsetX, mouseClickOffsetY;
 
     // Use this for initialization
     void Start()
     {
+        mainCam = GameObject.Find("Main Camera");
         z = 4.27f;// (Camera.main.transform.position - gameObject.transform.position).magnitude;
         Renderer currMeshRend = GetComponent<Renderer>();
         blockHeight = 0.83f * currMeshRend.bounds.size.y;
@@ -130,12 +132,24 @@ public class DragScript : MonoBehaviour
         if (isOriginBlock)
         {
             Debug.Log("Creating new block copy");
-            GameObject clone = Instantiate((GameObject)Resources.Load("Prefabs/VisualBlocks/" + gameObject.name), gameObject.transform.position, gameObject.transform.rotation);
+            GameObject clone = Instantiate((GameObject)Resources.Load("VisualBlocks/" + gameObject.name), gameObject.transform.position, gameObject.transform.rotation);
             clone.name = gameObject.name; //Instead of the clone name being gameObject.name + "(clone)"
 
             //Now swap the isOriginBlock flags in the clone so that the clone remains in place of the original
             isOriginBlock = false; 
             clone.GetComponent<DragScript>().isOriginBlock = true;
+            clone.tag = gameObject.tag;
+            gameObject.tag = "Untagged";
+            //ClickController
+            List<GameObject> lst = mainCam.GetComponent<ClickController>().listOfAllBlocks;
+            for(int i = 0; i < lst.Count; i++)
+            {
+                if (lst[i].Equals(gameObject))
+                {
+                    Debug.Log("ping!");
+                    lst[i] = clone;
+                }
+            }
         }
 
     }

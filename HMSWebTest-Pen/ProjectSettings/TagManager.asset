@@ -9,6 +9,10 @@ TagManager:
   - Glove
   - Target
   - drawsurface
+  - pen
+  - looks
+  - motion
+  - events
   layers:
   - Default
   - TransparentFX

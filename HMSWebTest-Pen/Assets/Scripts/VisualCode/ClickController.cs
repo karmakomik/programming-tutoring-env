@@ -12,20 +12,34 @@ public class ClickController : MonoBehaviour
     public static string draggedObjName = "";
     bool isObjHit = false;
     public static bool isMouseUp = true;
-
+    public List<GameObject> listOfAllBlocks = new List<GameObject>(); //Make sure to add any new block type into this list in the editor
+    
    // List<List<GameObject>> 
 
 	// Use this for initialization
 	void Start ()
     {
-	    
-	}
+        //Make pen default category, make all other block objects invisible
+        foreach (GameObject obj in listOfAllBlocks)
+        {
+            if (obj.tag.Equals("pen"))
+            {
+                obj.SetActive(true);
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
+        }
+
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.Escape))
         {
+            //List<GameObject> list = GameObject.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "Name");
             GameObject obj = GameObject.Find("whenRun");
             GameObject child = obj.GetComponent<DragScript>().getChildBlockObj();
             Debug.Log("printing connected children");
@@ -63,8 +77,20 @@ public class ClickController : MonoBehaviour
         }
     }
 
-    public void clickPenCategory()
+    public void clickPenCategory(string category)
     {
-        Debug.Log("clicked pen category!");
+        Debug.Log("clicked category " + category);
+        foreach (GameObject obj in listOfAllBlocks)
+        {
+            if (category == obj.tag)
+            {
+                obj.SetActive(true);
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
+        }
+
     }
 }
