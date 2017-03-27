@@ -32,7 +32,7 @@ public class DragScript : MonoBehaviour
         z = 4.27f;// (Camera.main.transform.position - gameObject.transform.position).magnitude;
         Renderer currMeshRend = GetComponent<Renderer>();
         blockHeight = 0.83f * currMeshRend.bounds.size.y;
-        Debug.Log("Height of " + transform.name + " is " + blockHeight);
+        //Debug.Log("Height of " + transform.name + " is " + blockHeight);
         //clickAudioSrc = GameObject.FindObjectOfType<AudioSource>();
         //clickAudioSrc.playOnAwake = false;
 
@@ -131,7 +131,7 @@ public class DragScript : MonoBehaviour
 
         if (isOriginBlock)
         {
-            Debug.Log("Creating new block copy");
+            //Debug.Log("Creating new block copy");
             GameObject clone = Instantiate((GameObject)Resources.Load("VisualBlocks/" + gameObject.name), gameObject.transform.position, gameObject.transform.rotation);
             clone.name = gameObject.name; //Instead of the clone name being gameObject.name + "(clone)"
 
@@ -139,14 +139,24 @@ public class DragScript : MonoBehaviour
             isOriginBlock = false; 
             clone.GetComponent<DragScript>().isOriginBlock = true;
             clone.tag = gameObject.tag;
-            gameObject.tag = "Untagged";
-            //ClickController
+
+            //Change tag of event blocks dragged into script area so that when the script area is closed (ESC key) we can identify all instantiated event blocks
+            if (gameObject.tag == "events")
+            {
+                gameObject.tag = "instantiatedEvents";
+            }
+            else
+            {
+                gameObject.tag = "Untagged";
+            }
+            
+            //We need to replace the reference of the selected block in the ClickController template block list with reference to clone
             List<GameObject> lst = mainCam.GetComponent<ClickController>().listOfAllBlocks;
             for(int i = 0; i < lst.Count; i++)
             {
                 if (lst[i].Equals(gameObject))
                 {
-                    Debug.Log("ping!");
+                    //Debug.Log("ping!");
                     lst[i] = clone;
                 }
             }
@@ -248,9 +258,9 @@ public class DragScript : MonoBehaviour
         {
             collidedObjTransform = other.transform;
             isCollide = true;
-            Debug.Log("Drag collision!" + transform.name);
+            //Debug.Log("Drag collision!" + transform.name);
 
-            Debug.Log("Collision with " + other.transform.name);
+            //Debug.Log("Collision with " + other.transform.name);
         }
     }
 

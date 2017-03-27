@@ -122,7 +122,7 @@ public class CameraController : MonoBehaviour
         //LookAtTarget();	
     }
 
-    Vector2 camOffset = new Vector3(-5, 5);
+    Vector2 camOffset = new Vector3(-3, 3);
     Vector2 camOffsetDest;
     Vector2 tempCamOffset;
 
@@ -136,7 +136,7 @@ public class CameraController : MonoBehaviour
         {*/
         //tempCamOffset = Vector2.Lerp(camOffset,camOffsetDest,)
         camOffset = Vector2.Lerp(camOffset, camOffsetDest, 2 * Time.deltaTime);
-        transform.position = target.position - new Vector3(camOffset.x, -6, camOffset.y); //new Vector3(-5, -7, 5);
+        transform.position = target.position - new Vector3(camOffset.x, -3, camOffset.y); //new Vector3(-5, -7, 5);
 
         if (angle2 != angle2Dest)
         {

@@ -40,13 +40,17 @@ public class ClickController : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             //List<GameObject> list = GameObject.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "Name");
-            GameObject obj = GameObject.Find("whenRun");
-            GameObject child = obj.GetComponent<DragScript>().getChildBlockObj();
-            Debug.Log("printing connected children");
-            while (child != null)
+            GameObject[] list = GameObject.FindGameObjectsWithTag("instantiatedEvents");
+            //GameObject obj = GameObject.Find("whenRun");
+            for (int i = 0; i < list.Length; i++)
             {
-                Debug.Log(child.name);
-                child = child.GetComponent<DragScript>().getChildBlockObj();
+                GameObject child = list[i].GetComponent<DragScript>().getChildBlockObj();
+                Debug.Log("printing connected children");
+                while (child != null)
+                {
+                    Debug.Log(child.name);
+                    child = child.GetComponent<DragScript>().getChildBlockObj();
+                }
             }
             SceneManager.LoadScene(0);
         }
@@ -56,7 +60,7 @@ public class ClickController : MonoBehaviour
         {
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitObj))
             {
-                Debug.Log("Object hit!" + hitObj.transform.name);
+                //Debug.Log("Object hit!" + hitObj.transform.name);
                 isMouseUp = false;
                 draggedObjName = hitObj.transform.name;
                 /*if (OnClick != null)
@@ -79,7 +83,7 @@ public class ClickController : MonoBehaviour
 
     public void clickPenCategory(string category)
     {
-        Debug.Log("clicked category " + category);
+        //Debug.Log("clicked category " + category);
         foreach (GameObject obj in listOfAllBlocks)
         {
             if (category == obj.tag)

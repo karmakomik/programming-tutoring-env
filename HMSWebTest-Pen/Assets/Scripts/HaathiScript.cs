@@ -167,7 +167,7 @@ public class HaathiScript : MonoBehaviour
                     string param2 = currCommand.Split(' ')[2]; //time
                     _speechBox.SetActive(true);
 
-                    Text txt = GameObject.Find("speechBoxText").GetComponent<Text>();
+                    Text txt = GameObject.Find("speechBoxText").GetComponent<Text>(); //Doesnt this search for speechboxtext through the scene?
                     txt.text = param;
 
                     float time = 0; //default
@@ -280,7 +280,7 @@ public class HaathiScript : MonoBehaviour
 
     public void evalBlocklyCode()
     {
-#if UNITY_EDITOR || UNITY_ANDROID
+#if UNITY_EDITOR || UNITY_ANDROID || UNITY_STANDALONE_WIN
         BrowserConnect.commandsList.Add("penDown");
             BrowserConnect.commandsList.Add("penSetColor #0000ff");
             BrowserConnect.commandsList.Add("moveForward 300");
