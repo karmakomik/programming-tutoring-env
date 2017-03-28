@@ -7,10 +7,22 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;
     public float lookSmooth = 0.09f;
-    public Vector3 offsetFromTarget = new Vector3(-6, -7, 5);//new Vector3(10, 16, 18); //new Vector3(0, -6, -8);
+    //public Vector3 offsetFromTarget = new Vector3(-6, -7, 5);//new Vector3(10, 16, 18); //new Vector3(0, -6, -8);
     public float xTilt = 10;
     public Camera camera;
     public float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
+
+    float camOffsetXFactor = 7.5f;
+    float camOffsetZFactor = 7.5f;
+    float camOffsetYFactor = 6f;
+
+    Vector2 camOffset;
+    Vector2 camOffsetDest;
+    Vector2 tempCamOffset;
+
+    float angle1 = 225;
+    float angle2 = 225;
+    float angle2Dest = 225;
 
     bool overHeadViewToggle = true;
 
@@ -22,33 +34,17 @@ public class CameraController : MonoBehaviour
 
 	// Use this for initialization
 	void Start ()
-    {        
+    {
+        camOffset = new Vector3(-camOffsetXFactor, camOffsetZFactor);
         SetCameraTarget(target);
         camera = gameObject.GetComponent<Camera>();
-        camera.fieldOfView = 80;
-        //camDefaultOrientation = transform.rotation;
-        //transform.rotation = Quaternion.Euler(45,-45, 0);
+        camera.fieldOfView = 60;
         changeCamView();
-
-        //transform.rotation = Quaternion.AngleAxis(90, Vector3.right);
-        //transform.position = new Vector3(target.position.x, 18.8f, target.position.z);
     }
 
     void SetCameraTarget(Transform t)
     {
         target = t;
-
-        /*if (target != null)
-        {
-            if (target.GetComponent<CharacterController>())
-            {
-                charController = target.GetComponent<CharacterController>();
-            }
-            else
-            {
-                Debug.LogError("The camera's target needs a character controller.");
-            }
-        }*/
     }
 
     void Update()
@@ -65,7 +61,7 @@ public class CameraController : MonoBehaviour
         }*/
 
         // Clamp the field of view to make sure it's between 0 and 180.
-        camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 35f, 99.9f);
+        camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, 35f, 69.9f);
 #endif
 
 #if UNITY_ANDROID
@@ -122,13 +118,7 @@ public class CameraController : MonoBehaviour
         //LookAtTarget();	
     }
 
-    Vector2 camOffset = new Vector3(-3, 3);
-    Vector2 camOffsetDest;
-    Vector2 tempCamOffset;
 
-    float angle1 = 225;
-    float angle2 = 225;
-    float angle2Dest = 225;
 
     void FollowTarget()
     {
@@ -136,12 +126,12 @@ public class CameraController : MonoBehaviour
         {*/
         //tempCamOffset = Vector2.Lerp(camOffset,camOffsetDest,)
         camOffset = Vector2.Lerp(camOffset, camOffsetDest, 2 * Time.deltaTime);
-        transform.position = target.position - new Vector3(camOffset.x, -3, camOffset.y); //new Vector3(-5, -7, 5);
+        transform.position = target.position - new Vector3(camOffset.x, -camOffsetYFactor, camOffset.y); //new Vector3(-5, -7, 5);
 
         if (angle2 != angle2Dest)
         {
             angle2 = Mathf.Lerp(angle2, angle2Dest, 2f * Time.deltaTime);
-            transform.rotation = Quaternion.Euler(45, angle2, 0);
+            transform.rotation = Quaternion.Euler(35, angle2, 0);
         }
         /*}
         else
@@ -161,8 +151,26 @@ public class CameraController : MonoBehaviour
         //angle2Dest = angle2Dest % 360;
         
         //Debug.Log("Angle - " + angle1);
-        camOffsetDest = new Vector2(6 * Mathf.Cos(Mathf.Deg2Rad * angle1), 6 * Mathf.Sin(Mathf.Deg2Rad * angle1));
+
+        camOffsetDest = new Vector2(camOffsetXFactor * Mathf.Cos(Mathf.Deg2Rad * angle1), camOffsetZFactor * Mathf.Sin(Mathf.Deg2Rad * angle1));
+
+        Debug.Log("Camview 1, angle1 = " + angle1 + ", angle2Dest = " + angle2Dest);
         
+    }
+
+    public void changeCamView(float val)
+    {
+        // x = r * cos(a), z = r * sin(a)
+        angle1 -= val;
+        //angle1 = angle1 % 360;
+        angle2Dest += val;//+= 90;
+        //angle2Dest = angle2Dest % 360;
+
+        //Debug.Log("Angle - " + angle1);
+        camOffsetDest = new Vector2(camOffsetXFactor * Mathf.Cos(Mathf.Deg2Rad * val), camOffsetZFactor * Mathf.Sin(Mathf.Deg2Rad * val));
+
+        Debug.Log("Camview 2, angle1 = " + angle1 + ", angle2Dest = " + angle2Dest);
+
     }
 
     /*void MoveToTarget()

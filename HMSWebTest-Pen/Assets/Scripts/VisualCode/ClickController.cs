@@ -13,6 +13,7 @@ public class ClickController : MonoBehaviour
     bool isObjHit = false;
     public static bool isMouseUp = true;
     public List<GameObject> listOfAllBlocks = new List<GameObject>(); //Make sure to add any new block type into this list in the editor
+    public GameObject scriptAreaObject;
     
    // List<List<GameObject>> 
 
@@ -42,16 +43,19 @@ public class ClickController : MonoBehaviour
             //List<GameObject> list = GameObject.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "Name");
             GameObject[] list = GameObject.FindGameObjectsWithTag("instantiatedEvents");
             //GameObject obj = GameObject.Find("whenRun");
+            List<string> commLst = new List<string>();
             for (int i = 0; i < list.Length; i++)
             {
                 GameObject child = list[i].GetComponent<DragScript>().getChildBlockObj();
-                Debug.Log("printing connected children");
+                //Debug.Log("printing connected children");
                 while (child != null)
                 {
-                    Debug.Log(child.name);
+                    //Debug.Log(child.name);
+                    commLst.Add(child.name);
                     child = child.GetComponent<DragScript>().getChildBlockObj();
                 }
             }
+            scriptAreaObject.SendMessage("addScript", commLst);
             SceneManager.LoadScene(0);
         }
 

@@ -53,6 +53,22 @@ public class GameControl : MonoBehaviour
         targetArrow.SetActive(true);
 
         initializeInstructions();
+
+        GameObject obj = GameObject.Find("ScriptObj");
+        if (obj != null)
+        {
+            Debug.Log("Script from editor - ");
+            List<string> lst =  obj.GetComponent<ScriptAreaData>().getScript();
+            foreach (string s in lst)
+            {
+                Debug.Log(s);                    
+            }
+
+        }
+        else
+        {
+            Debug.Log("script not found");
+        }
     }
 
     void initializeInstructions()
