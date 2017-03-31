@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ClickController : MonoBehaviour
 {
@@ -50,8 +51,19 @@ public class ClickController : MonoBehaviour
                 //Debug.Log("printing connected children");
                 while (child != null)
                 {
-                    //Debug.Log(child.name);
-                    commLst.Add(child.name);
+                    Debug.Log(child.name);
+                    if (child.name.Equals("sayBlock"))
+                    {
+                        string cm = "say ";
+                        cm += child.GetComponentInChildren<InputField>().text;
+                        Debug.Log("say param : " + cm);
+                        commLst.Add(cm);
+                    }
+                    else
+                    {
+                        commLst.Add(child.name);
+                    }
+                    
                     child = child.GetComponent<DragScript>().getChildBlockObj();
                 }
             }
