@@ -11,6 +11,7 @@ public class ClickController : MonoBehaviour
     public static event ClickAction OnMouseUp;
     private RaycastHit hitObj;
     public static string draggedObjName = "";
+    public static GameObject currDraggedObj = null;
     bool isObjHit = false;
     public static bool isMouseUp = true;
     public List<GameObject> listOfAllBlocks = new List<GameObject>(); //Make sure to add any new block type into this list in the editor
@@ -45,18 +46,40 @@ public class ClickController : MonoBehaviour
             GameObject[] list = GameObject.FindGameObjectsWithTag("instantiatedEvents");
             //GameObject obj = GameObject.Find("whenRun");
             List<string> commLst = new List<string>();
+            //Debug.Log("Command list length : " + list.Length);
             for (int i = 0; i < list.Length; i++)
             {
                 GameObject child = list[i].GetComponent<DragScript>().getChildBlockObj();
-                //Debug.Log("printing connected children");
+                Debug.Log("printing connected children");
                 while (child != null)
                 {
                     Debug.Log(child.name);
                     if (child.name.Equals("sayBlock"))
                     {
                         string cm = "say ";
-                        cm += child.GetComponentInChildren<InputField>().text;
+                        cm += child.GetComponent<DragScript>().inputField1.text;
                         Debug.Log("say param : " + cm);
+                        commLst.Add(cm);
+                    }
+                    else if (child.name.Equals("sayForSecsBlock"))
+                    {
+                        string cm = "sayForTime ";
+                        cm += child.GetComponent<DragScript>().inputField1.text + " " + child.GetComponent<DragScript>().inputField2.text;
+                        Debug.Log("sayForTime param : " + cm);
+                        commLst.Add(cm);
+                    }
+                    else if (child.name.Equals("moveBlock"))
+                    {
+                        string cm = "moveForward ";
+                        cm += child.GetComponent<DragScript>().inputField1.text;
+                        Debug.Log("moveForward param : " + cm);
+                        commLst.Add(cm);
+                    }
+                    else if (child.name.Equals("rotateBlock"))
+                    {
+                        string cm = "turnClockwise ";
+                        cm += child.GetComponent<DragScript>().inputField1.text;
+                        Debug.Log("turnClockwise param : " + cm);
                         commLst.Add(cm);
                     }
                     else
@@ -79,6 +102,7 @@ public class ClickController : MonoBehaviour
                 //Debug.Log("Object hit!" + hitObj.transform.name);
                 isMouseUp = false;
                 draggedObjName = hitObj.transform.name;
+                currDraggedObj = hitObj.transform.gameObject;
                 /*if (OnClick != null)
                 {
                     isObjHit = true;                    
@@ -89,6 +113,7 @@ public class ClickController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             draggedObjName = "";
+            currDraggedObj = null;
             isMouseUp = true;
             /*if (isObjHit)
             {                

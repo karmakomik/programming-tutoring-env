@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class DragScript : MonoBehaviour
 {
@@ -23,7 +24,12 @@ public class DragScript : MonoBehaviour
     private float intraRepeatBlockDistance = 0.015f; // Hardcoded based on 3D design 
     GameObject mainCam;
 
+    float mouseInitDownX;
+    float mouseInitDownY;
+
     float mouseClickOffsetX, mouseClickOffsetY;
+
+    public InputField inputField1, inputField2;
 
     // Use this for initialization
     void Start()
@@ -36,6 +42,7 @@ public class DragScript : MonoBehaviour
         //clickAudioSrc = GameObject.FindObjectOfType<AudioSource>();
         //clickAudioSrc.playOnAwake = false;
 
+        //Check if this is While/Repeat block (contains elongationRefPt)
         Transform[] childObjs = GetComponentsInChildren<Transform>();
         foreach (Transform t in childObjs)
         {
@@ -109,22 +116,31 @@ public class DragScript : MonoBehaviour
         }
         else
         {
+
+            Debug.Log("mouse drag diff x : " + (mouseInitDownX - Input.mousePosition.x));
+            //mouseInitDownY - Input.mousePosition.x;
             //if (transform.parent.GetComponent<DragScript>().isContainElongPt) //Is parent block a forever type block
             //{
-                transform.parent.GetComponent<DragScript>().elongateVertically(-getHeightOfBlocks(gameObject), -intraRepeatBlockDistance); 
-                //Next step : Cascade this up the chain until root node is reached
+            //transform.parent.GetComponent<DragScript>().elongateVertically(-getHeightOfBlocks(gameObject), -intraRepeatBlockDistance); //make parent shrink
+            //Next step : Cascade this up the chain until root node is reached
             //}
-            transform.parent.GetComponent<DragScript>().setChildBlockObj(null);
-            transform.SetParent(null);
 
+            if (Mathf.Abs(mouseInitDownX - Input.mousePosition.x) > 10)
+            {
+                transform.parent.GetComponent<DragScript>().setChildBlockObj(null);
+                transform.SetParent(null);
+
+
+                isObjUndocked = true;
+            }
             
-            isObjUndocked = true;
-            //isObjUndocked
         }
     }
 
     public void OnMouseDown() 
     {
+        mouseInitDownX = Input.mousePosition.x;
+        mouseInitDownY = Input.mousePosition.y;
         //Move object using offset which is diff b/w mouse click pos and transform pos
         mouseClickOffsetX = Camera.main.WorldToScreenPoint(gameObject.transform.position).x - Input.mousePosition.x;
         mouseClickOffsetY = Camera.main.WorldToScreenPoint(gameObject.transform.position).y - Input.mousePosition.y;
@@ -223,8 +239,15 @@ public class DragScript : MonoBehaviour
 
             }
             transform.SetParent(collidedObjTransform);
-            transform.parent.GetComponent<DragScript>().setChildBlockObj(gameObject);
-            transform.SetAsFirstSibling();
+            try
+            {
+                transform.parent.GetComponent<DragScript>().setChildBlockObj(gameObject);
+            }
+            catch (System.NullReferenceException e)
+            {
+                Debug.Log(e);// + "parent : " + transform.parent.name);
+            }
+            transform.SetAsFirstSibling(); // Set as the first child
 
         }
         isCollide = false;        
@@ -258,9 +281,9 @@ public class DragScript : MonoBehaviour
         {
             collidedObjTransform = other.transform;
             isCollide = true;
-            //Debug.Log("Drag collision!" + transform.name);
+            Debug.Log("Drag collision!" + transform.name);
 
-            //Debug.Log("Collision with " + other.transform.name);
+            Debug.Log("Collision with " + other.transform.name);
         }
     }
 
@@ -288,7 +311,7 @@ public class DragScript : MonoBehaviour
 
     private bool isThisObjBeingDragged()
     {
-        if (transform.name.Equals(ClickController.draggedObjName))
+        if (gameObject.Equals(ClickController.currDraggedObj))//if (transform.name.Equals(ClickController.draggedObjName))
         {
             return true;
         }
