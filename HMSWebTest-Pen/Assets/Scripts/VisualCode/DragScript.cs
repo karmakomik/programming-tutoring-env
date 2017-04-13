@@ -117,7 +117,7 @@ public class DragScript : MonoBehaviour
         else
         {
 
-            Debug.Log("mouse drag diff x : " + (mouseInitDownX - Input.mousePosition.x));
+            //Debug.Log("mouse drag diff x : " + (mouseInitDownX - Input.mousePosition.x));
             //mouseInitDownY - Input.mousePosition.x;
             //if (transform.parent.GetComponent<DragScript>().isContainElongPt) //Is parent block a forever type block
             //{
@@ -147,14 +147,15 @@ public class DragScript : MonoBehaviour
 
         if (isOriginBlock)
         {
-            //Debug.Log("Creating new block copy");
+            Debug.Log("Creating new block copy");
             GameObject clone = Instantiate((GameObject)Resources.Load("VisualBlocks/" + gameObject.name), gameObject.transform.position, gameObject.transform.rotation);
-            clone.name = gameObject.name; //Instead of the clone name being gameObject.name + "(clone)"
+            clone.name = gameObject.name; //Instead of the clone name being by default the string gameObject.name + "(clone)"
 
             //Now swap the isOriginBlock flags in the clone so that the clone remains in place of the original
             isOriginBlock = false; 
             clone.GetComponent<DragScript>().isOriginBlock = true;
             clone.tag = gameObject.tag;
+            //ClickController.currDraggedObj = gameObject;
 
             //Change tag of event blocks dragged into script area so that when the script area is closed (ESC key) we can identify all instantiated event blocks
             if (gameObject.tag == "events")
@@ -206,8 +207,6 @@ public class DragScript : MonoBehaviour
 
         }    
     }
-
-
 
     public void OnMouseUp()
     {
@@ -271,12 +270,19 @@ public class DragScript : MonoBehaviour
         return height;
     }
 
-
+    void OnDrawGizmos()
+    {
+        if (isThisObjBeingDragged())
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(transform.position, 0.1f);
+        }
+    }
 
     void OnTriggerEnter(Collider other)
     {
         
-        //Debug.Log(ClickController.draggedObjName);
+        Debug.Log("On trigger enter : " + ClickController.draggedObjName);
         if (isThisObjBeingDragged()) //To filter out collision trigger event in parent block onto which this child block is being snapped into
         {
             collidedObjTransform = other.transform;
@@ -287,15 +293,31 @@ public class DragScript : MonoBehaviour
         }
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        if (isThisObjBeingDragged()) //To filter out collision trigger event in parent block onto which this child block is being snapped into
+        {
+            //Debug.Log("On trigger stay : " + ClickController.draggedObjName);
+        } 
+    }
+
     void OnTriggerExit(Collider other)
     {
         //isObjUndocked = true;
-        isCollide = false;
+        Debug.Log("On trigger exit : " + ClickController.draggedObjName);
+        //if (isThisObjBeingDragged()) //To filter out collision trigger event in parent block onto which this child block is being snapped into
+        //{
+            isCollide = false;
+        //}
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isThisObjBeingDragged())
+        {
+            //Debug.Log(gameObject + " is being dragged");
+        }
         /*if (Input.GetKeyDown("space"))
         {
             if (flag1)

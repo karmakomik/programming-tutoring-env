@@ -50,10 +50,11 @@ public class HaathiScript : MonoBehaviour
         
         if (isExecute)
         {
-            if (BrowserConnect.commandsList.Count > 0)
+            Debug.Log("comm size : " + GameControl.commList.Count);
+            if (GameControl.commList.Count > 0)
             {
-                //Debug.Log("Current command  -  " + BrowserConnect.commandsList[0]);
-                string currCommand = BrowserConnect.commandsList[0];
+                //Debug.Log("Current command  -  " + GameControl.commList[0]);
+                string currCommand = GameControl.commList[0];
                 if (currCommand.StartsWith("moveForward"))
                 {
                     string param = currCommand.Split(' ')[1];
@@ -88,24 +89,24 @@ public class HaathiScript : MonoBehaviour
                     {
                         _pen.SendMessage("markControlObjPoint");
                         lerpStepFactor = 0.0f;
-                        BrowserConnect.commandsList.RemoveAt(0);
+                        GameControl.commList.RemoveAt(0);
                         initCalcToggle = false;
                     }
                 }
                 else if (currCommand.Equals("penDown"))
                 {
                     _pen.SendMessage("setPenDownStatus", true);
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
                 else if (currCommand.Equals("penUp"))
                 {
                     _pen.SendMessage("setPenDownStatus", false);
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
                 else if (currCommand.Equals("penClear"))
                 {
                     _pen.SendMessage("clearPenSandBox");
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
                 else if (currCommand.StartsWith("penSetColor"))
                 {
@@ -113,7 +114,7 @@ public class HaathiScript : MonoBehaviour
                     Color penColor;
                     ColorUtility.TryParseHtmlString(param, out penColor);
                     _pen.SendMessage("setPenColor",penColor);
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
                 else if (currCommand.Equals("turnRight"))
                 {
@@ -140,7 +141,7 @@ public class HaathiScript : MonoBehaviour
                         //Cleanup
                         isBananaHit = false;
                         hitBananaObj = null;
-                        BrowserConnect.commandsList.RemoveAt(0);
+                        GameControl.commList.RemoveAt(0);
                     }
                 }
                 else if (currCommand.StartsWith("turnClockwise"))
@@ -161,78 +162,96 @@ public class HaathiScript : MonoBehaviour
                         doTurnOpsEveryFrame(-angle);
                     }
                 }
-                else if (currCommand.StartsWith("sayForTime")) //Process this before "think" because "thinkForTime" starts with "think" ... just genius \(-_-)'/
+                else if (currCommand.StartsWith("sayForTime") && showDialog) //Process this before "think" because "thinkForTime" starts with "think" ... just genius \(-_-)'/
                 {
-                    string param = currCommand.Split(' ')[1]; //text
-                    string param2 = currCommand.Split(' ')[2]; //time
-                    _speechBox.SetActive(true);
-
-                    Text txt = GameObject.Find("speechBoxText").GetComponent<Text>(); //Doesnt this search for speechboxtext through the scene?
-                    txt.text = param;
-
-                    float time = 0; //default
-
-                    //Debug.Log("sayForTime");
-                    if (float.TryParse(param2, out time))
+                    string[] strParams = currCommand.Split(' ');
+                    if (strParams.Length > 0)
                     {
-                        StartCoroutine(showElementForSecs(time, _speechBox));
+                       // string param = currCommand.Split(' ')[1]; //text
+                      //  string param2 = currCommand.Split(' ')[2]; //time
+                        _speechBox.SetActive(true);
+
+                        Text txt = GameObject.Find("speechBoxText").GetComponent<Text>(); //Doesnt this search for speechboxtext through the scene?
+                        
+                        string s = currCommand.Substring(currCommand.IndexOf(' ') + 1, (currCommand.Length - 1 - currCommand.IndexOf(' ') - strParams[strParams.Length - 1].Length));
+                        Debug.Log("stripped params :" + s);
+                        txt.text = s;
+
+                        float time = 0; //default
+                        showDialog = false;
+                        //Debug.Log("sayForTime");
+                        if (float.TryParse(strParams[strParams.Length - 1], out time))
+                        {
+                            StartCoroutine(showElementForSecs(time, _speechBox));
+                        }
                     }
-                    BrowserConnect.commandsList.RemoveAt(0);
+
+                    GameControl.commList.RemoveAt(0);
                 }
-                else if (currCommand.StartsWith("say"))
+                else if (currCommand.StartsWith("say") && showDialog)
                 {
                     //_speechBox.text = "sdsd";
                     string param = currCommand.Split(' ')[1];//text
                     //Debug.Log("Saying...");
+                    _thinkBox.SetActive(false);
                     _speechBox.SetActive(true);
                     Text txt = GameObject.Find("speechBoxText").GetComponent<Text>();
                     txt.text = param;
 
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
-                else if (currCommand.StartsWith("thinkForTime")) //Process this before "think" because "thinkForTime" starts with "think" ... just genius \(-_-)'/
+                else if (currCommand.StartsWith("thinkForTime") && showDialog) //Process this before "think" because "thinkForTime" starts with "think" ... just genius \(-_-)'/
                 {
-                    string param = currCommand.Split(' ')[1]; //text
-                    string param2 = currCommand.Split(' ')[2]; //time
-                    //Debug.Log("Thinking...");
-                    _thinkBox.SetActive(true);
-                    Text txt = GameObject.Find("thinkBoxText").GetComponent<Text>();
-                    txt.text = param;
-
-                    float time = 0;//default
-
-                    if (float.TryParse(param2, out time))
+                    string[] strParams = currCommand.Split(' ');
+                    if (strParams.Length > 0)
                     {
-                        StartCoroutine(showElementForSecs(time, _thinkBox));
+                       // string param = currCommand.Split(' ')[1]; //text
+                       // string param2 = currCommand.Split(' ')[2]; //time
+                        _thinkBox.SetActive(true);
+
+                        Text txt = GameObject.Find("thinkBoxText").GetComponent<Text>(); //Doesnt this search for speechboxtext through the scene?
+                        
+                        string s = currCommand.Substring(currCommand.IndexOf(' ') + 1, (currCommand.Length - 1 - currCommand.IndexOf(' ') - strParams[strParams.Length - 1].Length));
+                        Debug.Log("stripped params :" + s);
+                        txt.text = s;
+
+                        float time = 0; //default
+                        showDialog = false;
+                        //Debug.Log("sayForTime");
+                        if (float.TryParse(strParams[strParams.Length - 1], out time))
+                        {
+                            StartCoroutine(showElementForSecs(time, _thinkBox));
+                        }
                     }
 
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
-                else if (currCommand.StartsWith("think"))
+                else if (currCommand.StartsWith("think") && showDialog)
                 {
                     string param = currCommand.Split(' ')[1];
                     //Debug.Log("Thinking...");
+                    _speechBox.SetActive(false);
                     _thinkBox.SetActive(true);
                     Text txt = GameObject.Find("thinkBoxText").GetComponent<Text>();
                     txt.text = param;
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
                 else if (currCommand.StartsWith("changeCostume"))
                 {
                     string param1 = currCommand.Split(' ')[1]; //Costume ID
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
                 else if (currCommand.StartsWith("gotoxy"))
                 {
                     string param1 = currCommand.Split(' ')[1]; //x
                     string param2 = currCommand.Split(' ')[2]; //y
 
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
                 else if (currCommand.StartsWith("playSound"))
                 {
                     string param1 = currCommand.Split(' ')[1]; //Sound ID
-                    BrowserConnect.commandsList.RemoveAt(0);
+                    GameControl.commList.RemoveAt(0);
                 }
             }
             else // No more commands left to execute
@@ -243,9 +262,12 @@ public class HaathiScript : MonoBehaviour
         }
 	}
 
+    bool showDialog = true;
+
     IEnumerator showElementForSecs(float time, GameObject obj)
     {
         yield return new WaitForSeconds(time);
+        showDialog = true;
         obj.SetActive(false);
 
     }
@@ -268,12 +290,12 @@ public class HaathiScript : MonoBehaviour
         else
         {
             lerpStepFactor = 0.0f;
-            BrowserConnect.commandsList.RemoveAt(0);
+            GameControl.commList.RemoveAt(0);
             initCalcToggle = false;
         }
     }
 
-    void startExecution()
+    public void startExecution()
     {
         isExecute = true;
     }
@@ -281,7 +303,7 @@ public class HaathiScript : MonoBehaviour
     public void evalBlocklyCode()
     {
 #if UNITY_EDITOR || UNITY_ANDROID || UNITY_STANDALONE_WIN
-        BrowserConnect.commandsList.Add("penDown");
+        /*BrowserConnect.commandsList.Add("penDown");
             BrowserConnect.commandsList.Add("penSetColor #0000ff");
             BrowserConnect.commandsList.Add("moveForward 300");
             BrowserConnect.commandsList.Add("turnAntiClockwise 90");
@@ -294,7 +316,7 @@ public class HaathiScript : MonoBehaviour
             //BrowserConnect.commandsList.Add("moveForward 400");
             //BrowserConnect.commandsList.Add("penClear");
             //BrowserConnect.commandsList.Add("thinkForTime hellosay 2");
-            BrowserConnect.commandsList.Add("think hellothink");
+            BrowserConnect.commandsList.Add("think hellothink");*/
             /*BrowserConnect.commandsList.Add("penSetColor #ff0000");
             BrowserConnect.commandsList.Add("turnClockwise 45");
             BrowserConnect.commandsList.Add("moveForward 550");                       

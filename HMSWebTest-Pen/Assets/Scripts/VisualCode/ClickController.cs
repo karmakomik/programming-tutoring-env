@@ -13,7 +13,7 @@ public class ClickController : MonoBehaviour
     public static string draggedObjName = "";
     public static GameObject currDraggedObj = null;
     bool isObjHit = false;
-    public static bool isMouseUp = true;
+    //public static bool isMouseUp = true;
     public List<GameObject> listOfAllBlocks = new List<GameObject>(); //Make sure to add any new block type into this list in the editor
     public GameObject scriptAreaObject;
     
@@ -68,6 +68,20 @@ public class ClickController : MonoBehaviour
                         Debug.Log("sayForTime param : " + cm);
                         commLst.Add(cm);
                     }
+                    else if (child.name.Equals("thinkBlock"))
+                    {
+                        string cm = "think ";
+                        cm += child.GetComponent<DragScript>().inputField1.text;
+                        Debug.Log("think param : " + cm);
+                        commLst.Add(cm);
+                    }
+                    else if (child.name.Equals("thinkForSecsBlock"))
+                    {
+                        string cm = "thinkForTime ";
+                        cm += child.GetComponent<DragScript>().inputField1.text + " " + child.GetComponent<DragScript>().inputField2.text;
+                        Debug.Log("thinkForTime param : " + cm);
+                        commLst.Add(cm);
+                    }
                     else if (child.name.Equals("moveBlock"))
                     {
                         string cm = "moveForward ";
@@ -81,6 +95,18 @@ public class ClickController : MonoBehaviour
                         cm += child.GetComponent<DragScript>().inputField1.text;
                         Debug.Log("turnClockwise param : " + cm);
                         commLst.Add(cm);
+                    }
+                    else if (child.name.Equals("penDownBlock"))
+                    {
+                        commLst.Add("penDown");
+                    }
+                    else if (child.name.Equals("penUpBlock"))
+                    {
+                        commLst.Add("penUp");
+                    }
+                    else if (child.name.Equals("clearBlock"))
+                    {
+                        commLst.Add("penClear");
                     }
                     else
                     {
@@ -100,7 +126,7 @@ public class ClickController : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hitObj))
             {
                 //Debug.Log("Object hit!" + hitObj.transform.name);
-                isMouseUp = false;
+                //isMouseUp = false;
                 draggedObjName = hitObj.transform.name;
                 currDraggedObj = hitObj.transform.gameObject;
                 /*if (OnClick != null)
@@ -114,7 +140,7 @@ public class ClickController : MonoBehaviour
         {
             draggedObjName = "";
             currDraggedObj = null;
-            isMouseUp = true;
+            //isMouseUp = true;
             /*if (isObjHit)
             {                
                 OnMouseUp(hitObj);

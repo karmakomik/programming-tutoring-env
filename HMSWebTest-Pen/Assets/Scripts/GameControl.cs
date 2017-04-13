@@ -34,6 +34,8 @@ public class GameControl : MonoBehaviour
     
     public GameObject targetArrow;
 
+    public static List<string> commList;
+
     int gameState = 0;
     //enum GameState { }
 
@@ -46,6 +48,7 @@ public class GameControl : MonoBehaviour
 
     void Start ()
     {
+        commList = new List<string>();
         AudioListener.volume = 0; //Set BG volume to 0
         changeTargetCircleColor(Color.red);
         //setTargetCircleVisible(true);
@@ -58,12 +61,12 @@ public class GameControl : MonoBehaviour
         if (obj != null)
         {
             Debug.Log("Script from editor - ");
-            List<string> lst =  obj.GetComponent<ScriptAreaData>().getScript();
-            foreach (string s in lst)
+            commList =  obj.GetComponent<ScriptAreaData>().getScript();
+            foreach (string s in commList)
             {
                 Debug.Log(s);                    
             }
-
+            DestroyObject(obj); //If you dont destroy this, the object persists across future transitions between the code editor and the main scene
         }
         else
         {
@@ -96,7 +99,7 @@ public class GameControl : MonoBehaviour
         if (Physics.Raycast(ray, out hit, mask.value) && Input.GetMouseButtonDown(0) 
             && hit.transform.name.StartsWith("ground") && !IsPointerOverUIObject())
         {
-            Debug.Log("Touch at " + hit.point);
+            //Debug.Log("Touch at " + hit.point);
             //Vector3 transformedHitPt = transform.TransformPoint(hit.transform.position);
             proj.transform.position = new Vector3(hit.point.x, proj.transform.position.y, hit.point.z);
             GameObject.Find("char1").SendMessage("setTarget", proj.transform);
