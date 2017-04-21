@@ -19,7 +19,8 @@ public class DragScript : MonoBehaviour
     Mesh currMesh;
     Vector3[] currMeshVerts;
     bool isContainElongPt = false;
-    Vector3 elongPt;
+    //Vector3 elongPt;
+    Transform elongPtTrans;
     public bool isOriginBlock = false;
     private float intraRepeatBlockDistance = 0.015f; // Hardcoded based on 3D design 
     GameObject mainCam;
@@ -30,6 +31,8 @@ public class DragScript : MonoBehaviour
     float mouseClickOffsetX, mouseClickOffsetY;
 
     public InputField inputField1, inputField2;
+
+    bool gotVert = false;
 
     // Use this for initialization
     void Start()
@@ -50,34 +53,45 @@ public class DragScript : MonoBehaviour
             {
                 //Debug.Log("" + transform.name + " contains elongationRefPt");
                 isContainElongPt = true;
-                elongPt = t.position;
-                Debug.Log("elongPt - " + elongPt);
+                elongPtTrans = t;
+                //elongPt = t.position;
+                //Debug.Log("elongPt - " + elongPt);
                 currMesh = GetComponent<MeshFilter>().mesh;
-                currMeshVerts = currMesh.vertices;               
+                currMeshVerts = currMesh.vertices;
+                gotVert = true;
+                /*Debug.Log("currMeshVerts count " + currMeshVerts.Length);
+                for (int i = 0; i < currMeshVerts.Length; i++)
+                {
+                    Debug.Log(transform.TransformPoint(currMeshVerts[i]));
+                }
+
+                Debug.Log("elongPt " + elongPt);*/
+
             }
         }
     }
 
     public void elongateVertically(float height, float gap)
     {
-        if (transform.GetComponent<DragScript>().isContainElongPt)
+        if (isContainElongPt)
         {
             Debug.Log("Height of incoming blocks - " + height);
+            //Debug.Log("elongPt " + elongPtTrans.position);
             int i = 0;
             int count = 0;
             //foreach (Vector3 v in currMeshVerts)
             while (i < currMeshVerts.Length)
             {
-                //Debug.Log(transform.TransformPoint(v));
-                if (transform.TransformPoint(currMeshVerts[i]).y < elongPt.y)
+                //Debug.Log(transform.TransformPoint(currMeshVerts[i]));
+                if (transform.TransformPoint(currMeshVerts[i]).y < elongPtTrans.position.y)
                 {
                     ++count;
                     currMeshVerts[i].y = currMeshVerts[i].y - height / 3f + gap; //Divided by the scaling factor plus the distance between the top and bottom halves of repeat block
                 }
                 ++i;
             }
-            Debug.Log("Total vertices - " + currMesh.vertices.Length);
-            Debug.Log("Vertices below elongation pt - " + count);
+            //Debug.Log("Total vertices - " + currMesh.vertices.Length);
+            //Debug.Log("Vertices below elongation pt - " + count);
             currMesh.vertices = currMeshVerts;
             currMesh.RecalculateBounds();
         }
@@ -119,11 +133,11 @@ public class DragScript : MonoBehaviour
 
             //Debug.Log("mouse drag diff x : " + (mouseInitDownX - Input.mousePosition.x));
             //mouseInitDownY - Input.mousePosition.x;
-            //if (transform.parent.GetComponent<DragScript>().isContainElongPt) //Is parent block a forever type block
-            //{
-            //transform.parent.GetComponent<DragScript>().elongateVertically(-getHeightOfBlocks(gameObject), -intraRepeatBlockDistance); //make parent shrink
-            //Next step : Cascade this up the chain until root node is reached
-            //}
+            if (transform.parent.GetComponent<DragScript>().isContainElongPt) //Is parent block a forever type block
+            {
+                transform.parent.GetComponent<DragScript>().elongateVertically(-getHeightOfBlocks(gameObject), -intraRepeatBlockDistance); //make parent shrink
+                //Next step : Cascade this up the chain until root node is reached
+            }
 
             if (Mathf.Abs(mouseInitDownX - Input.mousePosition.x) > 10)
             {
@@ -147,7 +161,7 @@ public class DragScript : MonoBehaviour
 
         if (isOriginBlock)
         {
-            Debug.Log("Creating new block copy");
+            //Debug.Log("Creating new block copy");
             GameObject clone = Instantiate((GameObject)Resources.Load("VisualBlocks/" + gameObject.name), gameObject.transform.position, gameObject.transform.rotation);
             clone.name = gameObject.name; //Instead of the clone name being by default the string gameObject.name + "(clone)"
 
@@ -195,16 +209,28 @@ public class DragScript : MonoBehaviour
     public void insertBlocks()
     {
         if (collidedObjTransform.GetComponent<DragScript>().isContainElongPt) //checks if block is horizontally expandable, must also check if the collided obj is forever or if-else
-        {
-            collidedObjTransform.GetComponent<DragScript>().elongateVertically(getHeightOfBlocks(gameObject), intraRepeatBlockDistance);
-  
-            transform.position = new Vector3(collidedObjTransform.position.x + 0.22f, collidedObjTransform.GetComponent<Renderer>().bounds.max.y - blockHeight - 0.11f, collidedObjTransform.position.z);
-
+        {            
+            if (isContainElongPt) //Does this object also contain an elongPt i.e a loop inside another loop?
+            {
+                collidedObjTransform.GetComponent<DragScript>().elongateVertically(getHeightOfBlocks(gameObject), intraRepeatBlockDistance);
+                transform.position = new Vector3(collidedObjTransform.position.x + 0.13f, collidedObjTransform.GetComponent<Renderer>().bounds.max.y - blockHeight - 0.03f, collidedObjTransform.position.z);
+            }
+            else
+            {
+                collidedObjTransform.GetComponent<DragScript>().elongateVertically(getHeightOfBlocks(gameObject), intraRepeatBlockDistance);
+                transform.position = new Vector3(collidedObjTransform.position.x + 0.22f, collidedObjTransform.GetComponent<Renderer>().bounds.max.y - blockHeight - 0.11f, collidedObjTransform.position.z);
+            }
         }
         else
         {
-            transform.position = new Vector3(collidedObjTransform.position.x, collidedObjTransform.position.y - blockHeight, collidedObjTransform.position.z);
-
+            if (isContainElongPt) //Does this object also contain an elongPt
+            {
+                transform.position = new Vector3(collidedObjTransform.position.x - 0.1f, collidedObjTransform.position.y - blockHeight + 0.06f, collidedObjTransform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(collidedObjTransform.position.x, collidedObjTransform.position.y - blockHeight, collidedObjTransform.position.z);
+            }
         }    
     }
 
@@ -266,7 +292,7 @@ public class DragScript : MonoBehaviour
         {
             return obj.GetComponent<DragScript>().blockHeight;
         }
-        //Debug.Log("Returned height" + height);
+        Debug.Log("Returned height" + height);
         return height;
     }
 
@@ -277,19 +303,30 @@ public class DragScript : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(transform.position, 0.1f);
         }
+
+        /*if (gotVert)
+        {
+            for (int i = 0; i < currMeshVerts.Length; i++)
+            {
+                //Debug.Log();
+                Gizmos.color = Color.red;
+                Gizmos.DrawSphere(transform.TransformPoint(currMeshVerts[i]), 0.001f);
+            }
+            Gizmos.DrawSphere(elongPt, 0.001f);
+        }*/
     }
 
     void OnTriggerEnter(Collider other)
     {
         
-        Debug.Log("On trigger enter : " + ClickController.draggedObjName);
+        //Debug.Log("On trigger enter : " + ClickController.draggedObjName);
         if (isThisObjBeingDragged()) //To filter out collision trigger event in parent block onto which this child block is being snapped into
         {
             collidedObjTransform = other.transform;
             isCollide = true;
-            Debug.Log("Drag collision!" + transform.name);
+            //Debug.Log("Drag collision!" + transform.name);
 
-            Debug.Log("Collision with " + other.transform.name);
+           // Debug.Log("Collision with " + other.transform.name);
         }
     }
 
@@ -304,7 +341,7 @@ public class DragScript : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         //isObjUndocked = true;
-        Debug.Log("On trigger exit : " + ClickController.draggedObjName);
+        //Debug.Log("On trigger exit : " + ClickController.draggedObjName);
         //if (isThisObjBeingDragged()) //To filter out collision trigger event in parent block onto which this child block is being snapped into
         //{
             isCollide = false;
