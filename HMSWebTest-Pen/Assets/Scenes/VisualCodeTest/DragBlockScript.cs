@@ -11,12 +11,14 @@ public class DragBlockScript : EventTrigger
     GameObject collidedObj = null;
     float blockHeight;
     float intraBlockBuffer = 15;
+    RectTransform rectTrans;
     Transform rootParentTrans;
+    //Canvasca
 
     void Start()
     {
         //Renderer currMeshRend = GetComponent<Renderer>();
-        RectTransform rectTrans = GetComponent<RectTransform>();
+        rectTrans = GetComponent<RectTransform>();
         blockHeight = rectTrans.rect.height;
         rootParentTrans = transform.parent;
     }
@@ -75,10 +77,13 @@ public class DragBlockScript : EventTrigger
     {
         //Debug.Log("OnEndDrag called.");
 
-        if (isCollide)
+        if (isCollide && (gameObject.tag != "events"))
         {
             transform.SetParent(collidedObj.transform);
-            transform.position = collidedObj.transform.position + new Vector3(0,-blockHeight/2 - intraBlockBuffer, 0);
+            Vector3[] fourCornersArray = new Vector3[4];
+            rectTrans.GetWorldCorners(fourCornersArray);
+            float height = Mathf.Abs(fourCornersArray[0].y - fourCornersArray[2].y);
+            transform.position = collidedObj.transform.position + new Vector3(0, -height / 2 - height / 5.75f, 0);
         }
 
     }

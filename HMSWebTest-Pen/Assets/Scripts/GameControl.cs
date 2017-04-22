@@ -19,6 +19,8 @@ public class GameControl : MonoBehaviour
     public GameObject exitPanel;
     public GameObject speechPanel;
 
+    public GameObject codeCanvas;
+
     public Button closeButton;
     public Button volButton;
 
@@ -48,16 +50,16 @@ public class GameControl : MonoBehaviour
 
     void Start ()
     {
-        commList = new List<string>();
+        //commList = new List<string>();
         AudioListener.volume = 0; //Set BG volume to 0
         changeTargetCircleColor(Color.red);
         //setTargetCircleVisible(true);
         targetCircle.SetActive(true);
         targetArrow.SetActive(true);
 
-        initializeInstructions();
+        //initializeInstructions();
 
-        GameObject obj = GameObject.Find("ScriptObj");
+        /*GameObject obj = GameObject.Find("ScriptObj");
         if (obj != null)
         {
             Debug.Log("Script from editor - ");
@@ -71,7 +73,7 @@ public class GameControl : MonoBehaviour
         else
         {
             Debug.Log("script not found");
-        }
+        }*/
     }
 
     void initializeInstructions()
@@ -124,6 +126,11 @@ public class GameControl : MonoBehaviour
     void LateUpdate()
     {
 
+    }
+
+    public void setCodeCanvasVisibility(bool state)
+    {
+        codeCanvas.SetActive(state);
     }
 
     void checkAvatarReachTarget()
@@ -185,7 +192,7 @@ public class GameControl : MonoBehaviour
 
     public void loadVisualCodeEditor()
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
     }
     bool volStatus = false;
     public void ChangeVolStatus()

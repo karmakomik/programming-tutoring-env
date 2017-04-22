@@ -48,7 +48,7 @@ public class HaathiScript : MonoBehaviour
             //_browserConnect.SendMessage("setCodeEditorVisibility", false);
         }
         
-        if (isExecute)
+        if (isExecute && GameControl.commList != null)
         {
             Debug.Log("comm size : " + GameControl.commList.Count);
             if (GameControl.commList.Count > 0)
