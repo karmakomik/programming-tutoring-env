@@ -20,6 +20,7 @@ public class GameControl : MonoBehaviour
     public GameObject speechPanel;
 
     public GameObject codeCanvas;
+    public GameObject mainGameUICanvas;
 
     public Button closeButton;
     public Button volButton;
@@ -50,6 +51,8 @@ public class GameControl : MonoBehaviour
 
     void Start ()
     {
+        codeCanvas.SetActive(false);
+        mainGameUICanvas.SetActive(true);
         //commList = new List<string>();
         AudioListener.volume = 0; //Set BG volume to 0
         changeTargetCircleColor(Color.red);
@@ -131,6 +134,7 @@ public class GameControl : MonoBehaviour
     public void setCodeCanvasVisibility(bool state)
     {
         codeCanvas.SetActive(state);
+        mainGameUICanvas.SetActive(!state);
     }
 
     void checkAvatarReachTarget()
