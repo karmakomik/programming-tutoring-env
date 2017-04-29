@@ -3812,7 +3812,7 @@ PolygonCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 437516478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -5591,6 +5591,86 @@ Transform:
   m_Father: {fileID: 891048245}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &691742965
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 691742966}
+  - component: {fileID: 691742969}
+  - component: {fileID: 691742968}
+  - component: {fileID: 691742967}
+  m_Layer: 5
+  m_Name: DeleteBinIm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &691742966
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 691742965}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2121822400}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -395.7, y: 201.9}
+  m_SizeDelta: {x: 50.3, y: 50.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &691742967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 691742965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bd646db94ed85942957578d8d374b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &691742968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 691742965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 4ac2bd806528ada4fa3cd190ea20d8a1, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &691742969
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 691742965}
 --- !u!1001 &709930713
 Prefab:
   m_ObjectHideFlags: 0
@@ -7337,7 +7417,7 @@ Prefab:
     - target: {fileID: 61527982148010710, guid: 008e6f61d66092e499436eafe603abcc,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114679798496351164, guid: 008e6f61d66092e499436eafe603abcc,
         type: 2}
@@ -13388,8 +13468,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 526648165}
   m_HandleRect: {fileID: 526648164}
   m_Direction: 3
-  m_Value: 0.9838237
-  m_Size: 0.70696473
+  m_Value: 0.98382384
+  m_Size: 0.7069232
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15029,6 +15109,10 @@ Prefab:
       propertyPath: emptyBlock
       value: 
       objectReference: {fileID: 200685713}
+    - target: {fileID: 1509575528176898, guid: cd77ec579dea3874f85f7f8f33cc707b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd77ec579dea3874f85f7f8f33cc707b, type: 2}
   m_IsPrefabParent: 0
@@ -18877,6 +18961,7 @@ RectTransform:
   - {fileID: 1272753895}
   - {fileID: 65456500}
   - {fileID: 894360522}
+  - {fileID: 691742966}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

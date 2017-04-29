@@ -19,6 +19,7 @@ public class DragBlockScript : EventTrigger
     //Canvasca
     public bool isOriginBlock = false;
     public GameObject emptyBlock;
+    bool isBeingDragged = false;
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class DragBlockScript : EventTrigger
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock)
+        if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock && isBeingDragged) // && gameObject.layer != 9)
         {
             Debug.Log("On trigger enter : " + other.transform.name);
             isCollide = true;
@@ -64,9 +65,13 @@ public class DragBlockScript : EventTrigger
 
     void OnTriggerExit2D(Collider2D other)
     {
-        isCollide = false;
-        collidedObj = null;
-        emptyBlock.SetActive(false);
+        if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock)
+        {
+            isCollide = false;
+            collidedObj = null;
+            emptyBlock.SetActive(false);
+            Debug.Log("On trigger exit : " + other.transform.name);
+        }
     }
 
     void setShadow(bool status)
@@ -94,8 +99,33 @@ public class DragBlockScript : EventTrigger
         }
     }
 
+    void toggleCollisionLayerOnChildren(bool status)
+    {
+        //setShadow(status);
+        if (status)
+        {
+            gameObject.layer = 9; //UI_Collision_Ignore
+        }
+        else
+        {
+            gameObject.layer = 5; //UI
+        }
+
+        if (childBlockObj != null)
+        {
+            //childBlockObj.GetComponent<DragBlockScript>().setShadowOnThisAndChildren(status);
+            childBlockObj.GetComponent<DragBlockScript>().toggleCollisionLayerOnChildren(status);
+        }
+        else //Leaf node condition
+        {
+            return;
+        }
+    }
+
     public override void OnBeginDrag(PointerEventData data)
     {
+        isBeingDragged = true;
+
         //Debug.Log("OnBeginDrag called.");
         //Debug.Log("transform position : " + transform.position);
         //Debug.Log("position : " + data.position);
@@ -149,6 +179,10 @@ public class DragBlockScript : EventTrigger
 
         //gameObject.GetComponentInChildren<Image>().GetComponent<Shadow>().effectDistance = new Vector2(2.17f, -2.17f);
         setShadowOnThisAndChildren(true);
+        if (childBlockObj != null)
+        {
+            GetComponent<DragBlockScript>().toggleCollisionLayerOnChildren(true);
+        }
     }
 
     /*public override void OnCancel(BaseEventData data)
@@ -204,6 +238,10 @@ public class DragBlockScript : EventTrigger
 
         //gameObject.GetComponentInChildren<Image>().GetComponent<Shadow>().effectDistance = new Vector2(0,0);
         setShadowOnThisAndChildren(false);
+        if (childBlockObj != null)
+        {
+            GetComponent<DragBlockScript>().toggleCollisionLayerOnChildren(false);
+        }
         if (isCollide && (gameObject.tag != "events") && !collidedObj.GetComponent<DragBlockScript>().isOriginBlock)
         {
             //Debug.Log("Collision + EndDrag");
@@ -247,7 +285,8 @@ public class DragBlockScript : EventTrigger
             }        
 
         }
-
+        emptyBlock.SetActive(false);
+        isBeingDragged = false;
     }
 
     public GameObject getDeepestChildBlockObj(GameObject obj)
