@@ -13,6 +13,10 @@ public class DragBlockScript : EventTrigger
     float blockHeight;
     float intraBlockBuffer = 15;
     RectTransform rectTrans;
+    public GameObject loopMid;
+    public GameObject loopBottom;
+    RectTransform loopMidRectTransform;
+    RectTransform loopEndRectTransform;
     public Transform rootParentTrans;
     Vector3 startPos;
     GameObject childBlockObj = null;
@@ -31,6 +35,12 @@ public class DragBlockScript : EventTrigger
         rectTrans.GetWorldCorners(fourCornersArray);
         blockHeight = Mathf.Abs(fourCornersArray[0].y - fourCornersArray[2].y);
         rootParentTrans = transform.parent;
+
+        if (loopMid != null && loopBottom != null)
+        {
+            loopMidRectTransform = loopMid.GetComponent<RectTransform>();
+            loopEndRectTransform = loopBottom.GetComponent<RectTransform>();
+        }
 
         //gameObject.GetComponentInChildren<Image>().GetComponent<Shadow>().effectDistance = new Vector2(0, 0);
         setShadow(false);
@@ -250,7 +260,16 @@ public class DragBlockScript : EventTrigger
             blockHeight = Mathf.Abs(fourCornersArray[0].y - fourCornersArray[2].y);
             if (collidedObj.transform.position.y >= transform.position.y) //Dragged block is below the center of the collided block
             {
-                transform.position = collidedObj.transform.position + new Vector3(0, -blockHeight / 2 - blockHeight / 5.75f, 0);
+                if (collidedObj.name == "repeatBlock")
+                {
+                    transform.position = collidedObj.transform.position + new Vector3(blockHeight/3, -blockHeight / 2 - blockHeight / 5.75f, 0);
+                    //collidedObj.GetComponent<DragBlockScript>().loopMidRectTransform.localScale = new Vector3();
+                    collidedObj.GetComponent<DragBlockScript>().loopEndRectTransform.localPosition += new Vector3(0, -blockHeight - blockHeight, 0);
+                }
+                else
+                {
+                    transform.position = collidedObj.transform.position + new Vector3(0, -blockHeight / 2 - blockHeight / 5.75f, 0);
+                }
                 transform.SetParent(collidedObj.transform);
                 GameObject collidedObjChildBlock = collidedObj.GetComponent<DragBlockScript>().getChildBlockObj();
                 collidedObj.GetComponent<DragBlockScript>().setChildBlockObj(gameObject);

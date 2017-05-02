@@ -10,7 +10,7 @@ public class DeleteBlocksScript : MonoBehaviour, IDropHandler, IPointerExitHandl
     Image currImage;
     public void OnDrop(PointerEventData data)
     {
-        if (data.pointerDrag != null)
+        if (data.pointerDrag != null && data.pointerDrag.name!="ScrollArea")
         {
             Debug.Log("Dropped object in CodePanel was: " + data.pointerDrag);
             Destroy(data.pointerDrag);
