@@ -11,35 +11,44 @@ public class DragBlockScript : EventTrigger
     bool isCollide = false;
     GameObject collidedObj = null;
     float blockHeight;
+    float totalLoopBlockHeight;
     float intraBlockBuffer = 15;
     RectTransform rectTrans;
+    public GameObject mainBlockIm;
     public GameObject loopMid;
     public GameObject loopBottom;
+    RectTransform mainBlockImTransform;
     RectTransform loopMidRectTransform;
-    RectTransform loopEndRectTransform;
+    RectTransform loopBottomRectTransform;
     public Transform rootParentTrans;
     Vector3 startPos;
     GameObject childBlockObj = null;
+    GameObject nestedChildBlockObj = null;
     //Canvasca
     public bool isOriginBlock = false;
     public GameObject emptyBlock;
     bool isBeingDragged = false;
+    bool collideWithLoopBottom = false;
+    float blockGap;
+    Vector3[] fourCornersTopRectArray;
+    Vector3[] fourCornersBottomRectArray;
+    float defaultHeightGapRepeatBlock;
 
     void Start()
     {
+        fourCornersTopRectArray = new Vector3[4];
+        fourCornersBottomRectArray = new Vector3[4];
         startPos = transform.position;
-        //Renderer currMeshRend = GetComponent<Renderer>();
         rectTrans = GetComponent<RectTransform>();
-        //blockHeight = rectTrans.rect.height;
-        Vector3[] fourCornersArray = new Vector3[4];
-        rectTrans.GetWorldCorners(fourCornersArray);
-        blockHeight = Mathf.Abs(fourCornersArray[0].y - fourCornersArray[2].y);
+        rectTrans.GetWorldCorners(fourCornersTopRectArray);
+        blockHeight = Mathf.Abs(fourCornersTopRectArray[0].y - fourCornersTopRectArray[2].y);
         rootParentTrans = transform.parent;
 
-        if (loopMid != null && loopBottom != null)
+        if (loopBottom != null)
         {
-            loopMidRectTransform = loopMid.GetComponent<RectTransform>();
-            loopEndRectTransform = loopBottom.GetComponent<RectTransform>();
+            mainBlockImTransform = mainBlockIm.GetComponent<RectTransform>();
+            //loopMidRectTransform = loopMid.GetComponent<RectTransform>();
+            loopBottomRectTransform = loopBottom.GetComponent<RectTransform>();
         }
 
         //gameObject.GetComponentInChildren<Image>().GetComponent<Shadow>().effectDistance = new Vector2(0, 0);
@@ -47,10 +56,21 @@ public class DragBlockScript : EventTrigger
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {
+    {        
         if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock && isBeingDragged) // && gameObject.layer != 9)
         {
-            Debug.Log("On trigger enter : " + other.transform.name);
+            if (other.GetType() == typeof(BoxCollider2D))
+            {
+                Debug.Log("Collision with boxcollider");
+                
+            }
+            else if (other.GetType() == typeof(PolygonCollider2D))
+            {
+                collideWithLoopBottom = true;
+                Debug.Log("Collision with polygoncollider");
+            }
+
+            //Debug.Log("On trigger enter : " + other.transform.name);
             isCollide = true;
             collidedObj = other.transform.gameObject;
             emptyBlock.SetActive(true);
@@ -77,10 +97,11 @@ public class DragBlockScript : EventTrigger
     {
         if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock)
         {
+            collideWithLoopBottom = false;
             isCollide = false;
             collidedObj = null;
             emptyBlock.SetActive(false);
-            Debug.Log("On trigger exit : " + other.transform.name);
+            //Debug.Log("On trigger exit : " + other.transform.name);
         }
     }
 
@@ -140,10 +161,13 @@ public class DragBlockScript : EventTrigger
         //Debug.Log("transform position : " + transform.position);
         //Debug.Log("position : " + data.position);
         //Debug.Log("pressPosition : " + data.pressPosition);
-        //clickDisplacement = new Vector2(transform.position.x - data.position.x, transform.position.y - data.position.y);
         //Debug.Log("clickDisplacement : " + clickDisplacement);
-        //clickDisplacement = new Vector3(data.pressPosition.x - data.position.x, data.pressPosition.y - data.position.y);
-        //clickDisplacement = data.pressPosition;
+
+        if (transform.parent != rootParentTrans)
+        {
+            transform.parent.GetComponent<DragBlockScript>().elongateVertically(2 * getHeightOfChildBlocks(gameObject));
+        }
+
         transform.position = data.position + clickDisplacement;// - data.pressPosition;
         try
         {
@@ -151,28 +175,11 @@ public class DragBlockScript : EventTrigger
         }
         catch (System.Exception e)
         {
-            Debug.Log("Root parent. No DragScript component attached.");
+            //Debug.Log("Parent is root. No DragScript component attached.");
         }
         //isBlockFinishDragging = true;
         transform.SetParent(rootParentTrans);
-        /*if (transform.parent.name.Equals("CommandSelectionPanel"))
-        {
-            //Debug.Log("CommandSelectionPanel");
-            //transform.parent.parent.SetAsLastSibling();
-            if (!transform.parent.GetComponent<CommandSelectionPanelScript>().isPointerInsidePanel)
-            {
-                transform.parent.parent.GetComponentInChildren<CodePanelScript>().getTransform().parent.SetAsLastSibling(); // The Drop functionality for the panel works only if it is the last sibling
-            }
-        }
-        else if (transform.parent.name.Equals("CodePanel"))
-        {
-            //Debug.Log("CodePanel");
-            //transform.parent.SetAsFirstSibling();
-            if (!transform.parent.GetComponent<CodePanelScript>().isPointerInsidePanel)
-            {
-                transform.parent.parent.parent.GetComponentInChildren<CommandSelectionPanelScript>().getTransform().SetAsLastSibling(); // The Drop functionality for the panel works only if it is the last sibling
-            }
-        }*/
+
         if (isOriginBlock)//if (transform.parent.name.Equals("CommandSelectionPanel"))
         {
             //Debug.Log("Parent is CommandSelectionPanel");
@@ -193,6 +200,8 @@ public class DragBlockScript : EventTrigger
         {
             GetComponent<DragBlockScript>().toggleCollisionLayerOnChildren(true);
         }
+
+        //Debug.Log("Deepest child" + getDeepestChildBlockObj(gameObject).name);
     }
 
     /*public override void OnCancel(BaseEventData data)
@@ -229,22 +238,24 @@ public class DragBlockScript : EventTrigger
     {
        //Debug.Log("OnDrop called.");
     }
-    
-    
+
+    public void elongateVertically(float height)
+    {
+        Debug.Log("elongateVertically");
+        if (gameObject.name == "repeatBlock")
+        {
+            loopBottomRectTransform.localPosition += new Vector3(0, height, 0);
+        }
+        if (transform.parent != rootParentTrans)
+        {
+            transform.parent.GetComponent<DragBlockScript>().elongateVertically(height);
+        }
+        
+    }
 
     public override void OnEndDrag(PointerEventData data)
     {
         //Debug.Log("OnEndDrag called.");
-        /*if (transform.parent.name.Equals("CommandSelectionPanel"))
-        {
-            if (transform.parent.GetComponent<CommandSelectionPanelScript>().isPointerInsidePanel) //If pointer is inside the command selection panel and the object is release inside the panel then it needs to be deleted
-            {
-                Debug.Log("Object destroyed");
-                Destroy(gameObject);
-                return; //To avoid execution of collision check below which would be triggered if there is collision with other objects inside the commandselectionpanel
-            }
-            //else
-        }*/
 
         //gameObject.GetComponentInChildren<Image>().GetComponent<Shadow>().effectDistance = new Vector2(0,0);
         setShadowOnThisAndChildren(false);
@@ -255,60 +266,112 @@ public class DragBlockScript : EventTrigger
         if (isCollide && (gameObject.tag != "events") && !collidedObj.GetComponent<DragBlockScript>().isOriginBlock)
         {
             //Debug.Log("Collision + EndDrag");
-            Vector3[] fourCornersArray = new Vector3[4];
-            rectTrans.GetWorldCorners(fourCornersArray);
-            blockHeight = Mathf.Abs(fourCornersArray[0].y - fourCornersArray[2].y);
-            if (collidedObj.transform.position.y >= transform.position.y) //Dragged block is below the center of the collided block
+            //Vector3[] fourCornersArray = new Vector3[4];
+            rectTrans.GetWorldCorners(fourCornersTopRectArray);
+            blockHeight = Mathf.Abs(fourCornersTopRectArray[0].y - fourCornersTopRectArray[2].y);
+            blockGap = blockHeight / 5.75f;
+
+            if (gameObject.name == "repeatBlock") //Calculate total height of default loop block
             {
+                if (getChildBlockObj() == null)
+                {
+                    collidedObj.GetComponent<DragBlockScript>().mainBlockImTransform.GetWorldCorners(fourCornersTopRectArray);
+                    collidedObj.GetComponent<DragBlockScript>().loopBottomRectTransform.GetWorldCorners(fourCornersBottomRectArray);
+                    defaultHeightGapRepeatBlock = Mathf.Abs(fourCornersTopRectArray[0].y - fourCornersBottomRectArray[1].y);
+
+                    totalLoopBlockHeight = 2 * Mathf.Abs(fourCornersTopRectArray[0].y - fourCornersTopRectArray[2].y) + defaultHeightGapRepeatBlock;
+                }
+            }
+
+
+            float heightOfChildBlocks = getHeightOfChildBlocks(gameObject);
+
+            /*if (collidedObj.name == "repeatBlock" && collidedObj.GetComponent<DragBlockScript>().getChildBlockObj() != null)
+            {
+                collidedObj.GetComponent<DragBlockScript>().mainBlockImTransform.GetWorldCorners(fourCornersTopRectArray);
+                collidedObj.GetComponent<DragBlockScript>().loopBottomRectTransform.GetWorldCorners(fourCornersBottomRectArray);
+                defaultHeightGapRepeatBlock = Mathf.Abs(fourCornersTopRectArray[0].y - fourCornersBottomRectArray[1].y);
+            }*/
+
+            if (collideWithLoopBottom && collidedObj.name == "repeatBlock")
+            {
+                //Debug.Log("Set block below loopend recttransform");
+                transform.position = new Vector3(collidedObj.transform.position.x, collidedObj.GetComponent<DragBlockScript>().loopBottomRectTransform.position.y - blockHeight / 2 - blockGap, 0);
+                transform.SetParent(collidedObj.transform);
+                collidedObj.GetComponent<DragBlockScript>().setChildBlockObj(gameObject);
+            }
+            else if (collidedObj.transform.position.y >= transform.position.y) //Dragged block is below the center of the collided block
+            {
+                Debug.Log("Inserted below");
+                GameObject deepestChild = getDeepestChildBlockObj(gameObject);
                 if (collidedObj.name == "repeatBlock")
                 {
-                    transform.position = collidedObj.transform.position + new Vector3(blockHeight/3, -blockHeight / 2 - blockHeight / 5.75f, 0);
+                    Debug.Log("Inserted inside loop");
+                    transform.position = collidedObj.transform.position + new Vector3(blockHeight / 3, -blockHeight / 2 - blockGap, 0);
+                    if (collidedObj.GetComponent<DragBlockScript>().getChildBlockObj() == null) //Repeat block has no children thus far
+                    {
+                        //collidedObj.GetComponent<DragBlockScript>().loopEndRectTransform.localPosition += new Vector3(0, -1.9f * blockHeight, 0);
+                        collidedObj.GetComponent<DragBlockScript>().elongateVertically(-1.3f * heightOfChildBlocks);
+
+                    }
+                    else
+                    {
+                        //collidedObj.GetComponent<DragBlockScript>().loopEndRectTransform.localPosition += new Vector3(0, -blockHeight - blockHeight, 0);
+                        collidedObj.GetComponent<DragBlockScript>().elongateVertically(-2 * heightOfChildBlocks);
+                    }
                     //collidedObj.GetComponent<DragBlockScript>().loopMidRectTransform.localScale = new Vector3();
-                    collidedObj.GetComponent<DragBlockScript>().loopEndRectTransform.localPosition += new Vector3(0, -blockHeight - blockHeight, 0);
+                    collidedObj.GetComponent<DragBlockScript>().setNestedChildBlockObj(gameObject);
+                    transform.SetParent(collidedObj.transform);
                 }
                 else
                 {
-                    transform.position = collidedObj.transform.position + new Vector3(0, -blockHeight / 2 - blockHeight / 5.75f, 0);
+                    //transform.position = collidedObj.transform.position + new Vector3(0, -blockHeight / 2 - blockHeight / 5.75f, 0);
+                    transform.position = collidedObj.transform.position + new Vector3(0, -blockHeight / 2 - blockGap, 0);
+                    transform.SetParent(collidedObj.transform);
+                    transform.parent.GetComponent<DragBlockScript>().elongateVertically(-2 * heightOfChildBlocks);
+                    GameObject collidedObjChildBlock = collidedObj.GetComponent<DragBlockScript>().getChildBlockObj();
+                    collidedObj.GetComponent<DragBlockScript>().setChildBlockObj(gameObject);
+                    if (collidedObjChildBlock != null)
+                    {
+                        collidedObjChildBlock.transform.position = transform.position + new Vector3(0, (-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f), 0);
+                        collidedObjChildBlock.transform.SetParent(deepestChild.transform);
+                    }
+                    deepestChild.GetComponent<DragBlockScript>().setChildBlockObj(collidedObjChildBlock);
                 }
-                transform.SetParent(collidedObj.transform);
-                GameObject collidedObjChildBlock = collidedObj.GetComponent<DragBlockScript>().getChildBlockObj();
-                collidedObj.GetComponent<DragBlockScript>().setChildBlockObj(gameObject);
-                if (collidedObjChildBlock != null)
-                {
-                    collidedObjChildBlock.transform.position = transform.position + new Vector3(0, (-getHeightOfChildBlocks(gameObject) / 2) - (getHeightOfChildBlocks(gameObject) / 5.75f), 0);
-                    collidedObjChildBlock.transform.SetParent(transform);
-                }
+
             }
             else //Dragged block is above the center of the collided block
             {
+                Debug.Log("Inserted above");
                 GameObject deepestChild = getDeepestChildBlockObj(gameObject);
-                Debug.Log("Deepest child " + deepestChild.name);
+                //Debug.Log("Deepest child " + deepestChild.name);
 
                 if (collidedObj.transform.parent == rootParentTrans)
                 {
-                    transform.position = collidedObj.transform.position - new Vector3(0, -getHeightOfChildBlocks(gameObject) / 2 - getHeightOfChildBlocks(gameObject) / 5.75f, 0);
+                    transform.position = collidedObj.transform.position - new Vector3(0, -heightOfChildBlocks / 2 - heightOfChildBlocks / 5.75f, 0);
                     collidedObj.transform.SetParent(deepestChild.transform);
-                    getDeepestChildBlockObj(gameObject).GetComponent<DragBlockScript>().setChildBlockObj(collidedObj);
+                    deepestChild.GetComponent<DragBlockScript>().setChildBlockObj(collidedObj);
                 }
                 else
                 {
                     transform.position = collidedObj.transform.position;// + new Vector3(0, -blockHeight / 2 - blockHeight / 5.75f, 0);
-                    collidedObj.transform.position = transform.position + new Vector3(0, (-getHeightOfChildBlocks(gameObject) / 2) - (getHeightOfChildBlocks(gameObject) / 5.75f), 0);
+                    collidedObj.transform.position = transform.position + new Vector3(0, (-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f), 0);
                     collidedObj.transform.parent.GetComponent<DragBlockScript>().setChildBlockObj(gameObject);
                     transform.SetParent(collidedObj.transform.parent);
                     collidedObj.transform.SetParent(deepestChild.transform);
-                    getDeepestChildBlockObj(gameObject).GetComponent<DragBlockScript>().setChildBlockObj(collidedObj);
+                    deepestChild.GetComponent<DragBlockScript>().setChildBlockObj(collidedObj);
 
                     //collidedObj.transform.SetParent(transform);
                 }
-            }        
+            }
+            
 
         }
         emptyBlock.SetActive(false);
         isBeingDragged = false;
     }
 
-    public GameObject getDeepestChildBlockObj(GameObject obj)
+    public GameObject getDeepestChildBlockObj(GameObject obj) //Returns the deepest child by recursing through the hierarchy, returns current obj if no children exist
     {
         GameObject deepestChild;
         if (getChildBlockObj() != null)
@@ -330,16 +393,27 @@ public class DragBlockScript : EventTrigger
 
     public void setChildBlockObj(GameObject obj)
     {
-        if (obj != null)
-            Debug.Log("Parent block : " + transform.name + ", Attached child obj : " + obj.transform.name);
+        /*if (obj != null)
+            Debug.Log("Parent block (this) : " + transform.name + ", Attached child obj : " + obj.transform.name);
         else
-            Debug.Log("Parent block : " + transform + ", Attached child obj : null");
+            Debug.Log("Parent block (this) : " + transform + ", Attached child obj : null");*/
 
         childBlockObj = obj;
     }
 
+    public GameObject getNestedChildBlockObj()
+    {
+        return nestedChildBlockObj;
+        //Debug.Log("getBlockChild");
+    }
+
+    public void setNestedChildBlockObj(GameObject obj)
+    { 
+        nestedChildBlockObj = obj;
+    }
+
     //To calculate height of current block + all child blocks stacked underneath, we make recursive calls to getHeightOfBlocks() 
-    private float getHeightOfChildBlocks(GameObject obj)
+    private float getHeightOfChildBlocks(GameObject obj) 
     {
         //Debug.Log("hit");
         float height = 0;
