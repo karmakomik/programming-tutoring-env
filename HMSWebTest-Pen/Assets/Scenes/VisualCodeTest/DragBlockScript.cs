@@ -124,6 +124,13 @@ public class DragBlockScript : EventTrigger
     void setShadowOnThisAndChildren(bool status)
     {
         setShadow(status);
+
+        if (nestedChildBlockObj != null) //branch off inside loops if there is a nestedchildobject
+        {
+            nestedChildBlockObj.GetComponent<DragBlockScript>().setShadowOnThisAndChildren(status);
+        }
+
+
         if (childBlockObj != null)
         {
             childBlockObj.GetComponent<DragBlockScript>().setShadowOnThisAndChildren(status);
@@ -169,10 +176,13 @@ public class DragBlockScript : EventTrigger
         float heightOfChildBlocks = getHeightOfChildBlocks(gameObject);
         if (transform.parent != rootParentTrans)
         {
-            if (transform.parent.GetComponent<DragBlockScript>().loopBottom != null && transform.parent.GetComponent<DragBlockScript>().getNestedChildBlockObj() == null)
+            if (transform.parent.GetComponent<DragBlockScript>().loopBottom != null) //immediate parent is a loop block
             {
-                Debug.Log("Shrinking loop to default state");
-                transform.parent.GetComponent<DragBlockScript>().elongateVertically((heightOfChildBlocks / 2) + (heightOfChildBlocks / 5.75f) - transform.parent.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
+                if (transform.parent.GetComponent<DragBlockScript>().getNestedChildBlockObj() == gameObject)
+                {
+                    Debug.Log("Shrinking loop to default state");
+                    transform.parent.GetComponent<DragBlockScript>().elongateVertically((heightOfChildBlocks / 2) + (heightOfChildBlocks / 5.75f) - transform.parent.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
+                }
             }
             else
             {
@@ -184,7 +194,14 @@ public class DragBlockScript : EventTrigger
         transform.position = data.position + clickDisplacement;// - data.pressPosition;
         try
         {
-           transform.parent.GetComponent<DragBlockScript>().setChildBlockObj(null); //this is a problem as when a loop's immediate nested child object is removed, the child beneath will also be removed.
+            if (transform.parent.GetComponent<DragBlockScript>().getNestedChildBlockObj() == gameObject)
+            {
+                transform.parent.GetComponent<DragBlockScript>().setNestedChildBlockObj(null); //this is a problem as when a loop's immediate nested child object is removed, the child beneath will also be removed.
+            }
+            else
+            { 
+                transform.parent.GetComponent<DragBlockScript>().setChildBlockObj(null); //this is a problem as when a loop's immediate nested child object is removed, the child beneath will also be removed.
+            }
         }
         catch (System.Exception e)
         {
@@ -322,7 +339,7 @@ public class DragBlockScript : EventTrigger
                     {
                         //collidedObj.GetComponent<DragBlockScript>().loopEndRectTransform.localPosition += new Vector3(0, -1.9f * blockHeight, 0);
                         collidedObj.GetComponent<DragBlockScript>().elongateVertically((-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
-
+                        collidedObj.GetComponent<PolygonCollider2D>().offset -= new Vector2(0, (-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
                     }
                     else
                     {
