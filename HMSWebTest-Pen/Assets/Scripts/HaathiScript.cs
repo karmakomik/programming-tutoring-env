@@ -271,7 +271,7 @@ public class HaathiScript : MonoBehaviour
         obj.SetActive(false);
 
     }
-
+  
     void doTurnOpsEveryFrame(int ang)
     {
         if (!initCalcToggle)
