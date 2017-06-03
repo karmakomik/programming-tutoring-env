@@ -61,11 +61,11 @@ class haathiClass:
 		self.haathiObjScript.addCommandToPool("isTouching " + str(obj))	
 
 #Trace command callback 
-def traceit(frame, event, arg):
-   if event == "line": 
-       lineno = frame.f_lineno       
-       unity.Debug.Log("line " + str(lineno))
-   return traceit
+#def traceit(frame, event, arg):
+ #  if event == "line": 
+ #      lineno = frame.f_lineno       
+ #      unity.Debug.Log("line " + str(lineno))
+ # 	return traceit
 #sys.settrace(traceit)
 
 #haathiObjScript.addCommandToPool("move 200")

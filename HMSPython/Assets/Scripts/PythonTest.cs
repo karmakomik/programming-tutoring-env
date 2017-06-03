@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿//using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using IronPython;
-using IronPython.Modules;
+//using IronPython;
+//using IronPython.Modules;
 using System.Text;
+using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using Microsoft.Scripting.Hosting;
 
@@ -16,15 +17,21 @@ public class PythonTest : MonoBehaviour
     ScriptSource scriptSource;
     ScriptEngine scriptEngine;
     ScriptScope scriptScope;
+    Dictionary<string, string> syntaxHighLightDict;
 
     // Use this for initialization
     void Start ()
     {
+        //syntaxHighLightDict = new Dictionary<string, string>();
+
         Dictionary<string, object> options = new Dictionary<string, object>();
         options["Debug"] = true;
         scriptEngine = IronPython.Hosting.Python.CreateEngine(options);
 
         scriptScope = scriptEngine.CreateScope();
+
+        //richTextInputField.Select();
+        //richTextInputField.ActivateInputField();
 
         // load the assemblies for unity, using types    
         // to resolve assemblies so we don't need to hard code paths    
@@ -48,8 +55,31 @@ public class PythonTest : MonoBehaviour
 
         //scriptSource = scriptEngine.CreateScriptSourceFromString(init.ToString());
         scriptSource = scriptEngine.CreateScriptSourceFromFile("haathi.py");
-        scriptSource.Execute(scriptScope);
+        scriptSource.Execute(scriptScope);   
     }
+
+
+
+    MatchEvaluator evaluator = delegate (Match m)
+    {
+        string replaceStr ="";
+        //Debug.Log("Matched word = " + m.Value);
+        if (m.Value.Contains("def") || m.Value.Contains("class"))
+        {
+            replaceStr = "<color=aqua>" + m.Value + "</color>";
+        }
+        else if (m.Value.Contains("import") || m.Value.Contains("if") || m.Value.Contains("for") || m.Value.Contains("in") || m.Value.Contains("as") || m.Value.Contains("in") || m.Value.Contains("while"))
+        {
+            replaceStr = "<color=orange>" + m.Value + "</color>";
+        }
+        else 
+        {
+            Debug.Log("matched");
+            replaceStr = m.Value;
+        }
+
+        return replaceStr;
+    };
 
     public void onCodeChange()
     {
@@ -58,7 +88,12 @@ public class PythonTest : MonoBehaviour
         //codeEditorRichText.text = codeEditor.text;
         string richTxtCode = rawCodeInputField.text;
         //Debug.Log(richTxtCode.IndexOf("haathiObject"));
-        richTxtCode = richTxtCode.Replace("haathiObject", "<b>haathiObject</b>");
+
+        Regex pythonSyntaxRegEx = new Regex("(def )|(if )|(return )|(class )|(for )|(import )|(as )|(=)|(while )|(in )|(haathiObject.)");
+
+        //richTxtCode = richTxtCode.Replace("haathiObject", "<b>haathiObject</b>");
+        //richTxtCode = Regex.Replace(richTxtCode, "(def )", "<color=aqua>def</color>")
+        richTxtCode = pythonSyntaxRegEx.Replace(richTxtCode, evaluator);
 
         richTextInputField.text = richTxtCode;
         richTextInputField.caretPosition = rawCodeInputField.caretPosition;
