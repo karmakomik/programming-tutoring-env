@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
 
-public class CubeScript : MonoBehaviour
+public class ProgrammableGameObjectScript : MonoBehaviour
 {
     public GameObject codePanel;
     List<string> commList = new List<string>();
@@ -12,7 +12,7 @@ public class CubeScript : MonoBehaviour
     Vector3 haathiPos;
     Quaternion haathiRot;
     bool isExecute = false;
-    Vector3 haathiForwardFactVec = new Vector3(0,0,0);
+    Vector3 haathiForwardFactVec = new Vector3(0, 0, 0);
 
     // Use this for initialization
     void Start()
@@ -71,14 +71,14 @@ public class CubeScript : MonoBehaviour
                 if (currComm.StartsWith("move"))
                 {
                     float dist = 0;
-                    if (float.TryParse(currComm.Split(' ')[1], out dist)){ }
+                    if (float.TryParse(currComm.Split(' ')[1], out dist)) { }
                     move(dist);
                     commList.RemoveAt(0);
                 }
                 else if (currComm.StartsWith("rotate"))
                 {
                     float ang = 0;
-                    if (float.TryParse(currComm.Split(' ')[1], out ang)){ }
+                    if (float.TryParse(currComm.Split(' ')[1], out ang)) { }
                     rotate(ang);
                     commList.RemoveAt(0);
                 }
@@ -86,7 +86,7 @@ public class CubeScript : MonoBehaviour
                 {
                     moveToNextCommand = false;
                     float time = 0;
-                    if (float.TryParse(currComm.Split(' ')[1], out time)){ }
+                    if (float.TryParse(currComm.Split(' ')[1], out time)) { }
                     //Debug.Log("Start wait");
                     //timerThread = new Thread(new ParameterizedThreadStart(waitSecs));
                     //timerThread.Start(time);
@@ -135,12 +135,12 @@ public class CubeScript : MonoBehaviour
         haathiForwardFactVec.Set(0, 0, units / 100);
         haathiPos = transform.localPosition + transform.TransformDirection(haathiForwardFactVec);
     }
-    
+
     private IEnumerator _wait(float units)
-    {        
+    {
         //objectPaused = true;
         //Debug.Log("Start wait");
-        yield return new WaitForSeconds(units);        
+        yield return new WaitForSeconds(units);
         //Debug.Log("End wait");
         moveToNextCommand = true;
     }

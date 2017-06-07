@@ -137,6 +137,12 @@ public class GameControl : MonoBehaviour
         mainGameUICanvas.SetActive(!state);
     }
 
+    public void setPythonCanvasVisibility(bool state)
+    {
+        textCodeArea.SetActive(state);
+        mainGameUICanvas.SetActive(!state);
+    }
+
     void checkAvatarReachTarget()
     {
         if (Vector3.Distance(targetCircle.transform.position, mainAvatar.transform.position) < 1)

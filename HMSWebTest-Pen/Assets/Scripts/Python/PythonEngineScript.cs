@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using Microsoft.Scripting.Hosting;
 
-public class PythonTest : MonoBehaviour
+public class PythonEngineScript : MonoBehaviour
 {
     
     public GameObject haathiObj;
@@ -42,8 +42,8 @@ public class PythonTest : MonoBehaviour
         scriptEngine.Runtime.LoadAssembly(System.Reflection.Assembly.GetExecutingAssembly());
         scriptEngine.Runtime.LoadAssembly(typeof(GameObject).Assembly);
         //scriptEngine.Runtime.LoadAssembly(typeof(Editor).Assembly);
-        scriptEngine.Runtime.LoadAssembly(typeof(CubeScript).Assembly); // Source : http://stackoverflow.com/questions/11766181/ironpython-in-unity3d
-        scriptEngine.Runtime.LoadAssembly(typeof(PythonTest).Assembly);
+        scriptEngine.Runtime.LoadAssembly(typeof(ProgrammableGameObjectScript).Assembly); // Source : http://stackoverflow.com/questions/11766181/ironpython-in-unity3d
+        scriptEngine.Runtime.LoadAssembly(typeof(PythonEngineScript).Assembly);
         //string dllpath = System.IO.Path.GetDirectoryName((typeof(ScriptEngine)).Assembly.Location).Replace("\\", "/");
         // load needed modules and paths    
         init = new StringBuilder();
@@ -61,8 +61,8 @@ public class PythonTest : MonoBehaviour
         {
             "import sys",
             "import UnityEngine as unity",
-            "import CubeScript",
-            "import PythonTest",
+            "import ProgrammableGameObjectScript",
+            "import PythonEngineScript",
             "import System",
             "unity.Debug.Log(\"Python console initialized\")",
             "haathiObj = unity.GameObject.Find(\"haathi\")",
@@ -70,7 +70,7 @@ public class PythonTest : MonoBehaviour
             "   \"This class acts as an interface with the Unity haathi object\"",
             "   def __init__(self):",
             "       unity.Debug.Log(\"haathi object initialized\")",
-            "       self.haathiObjScript = haathiObj.GetComponent[CubeScript]()",
+            "       self.haathiObjScript = haathiObj.GetComponent[ProgrammableGameObjectScript]()",
             "   def move(self, units):",
             "       self.haathiObjScript.addCommandToPool(\"move \" + str(units))",
             "   def wait(self, units):",
@@ -95,8 +95,7 @@ public class PythonTest : MonoBehaviour
             "       self.haathiObjScript.addCommandToPool(\"setPenColor \" + str(color))",
             "   def isTouching(self, obj):",
             "       self.haathiObjScript.addCommandToPool(\"isTouching \" + str(obj))",
-            "haathiObject = haathiClass()",
-            "",
+            "haathiObject = haathiClass()"
         };
         scriptSource = scriptEngine.CreateScriptSourceFromString(string.Join("\r", initPyCode));
         try
@@ -162,7 +161,7 @@ public class PythonTest : MonoBehaviour
 
     public void runCode()
     {
-        haathiObj.GetComponent<CubeScript>().clearCommandPool();
+        haathiObj.GetComponent<ProgrammableGameObjectScript>().clearCommandPool();
         
         pythonLines = new StringBuilder();
         pythonLines.AppendLine(rawCodeInputField.text);
@@ -183,7 +182,7 @@ public class PythonTest : MonoBehaviour
         Debug.Log("Code typed is " + finalCode);
         scriptSource = scriptEngine.CreateScriptSourceFromString(finalCode);
         scriptSource.Execute(scriptScope);
-        haathiObj.GetComponent<CubeScript>().startExecution();
+        haathiObj.GetComponent<ProgrammableGameObjectScript>().startExecution();
 
     }
 
