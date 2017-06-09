@@ -70,8 +70,9 @@ public class PenScript : MonoBehaviour
 	// Update is called once per frame
 	void Update() 
     {
-        if (rayCastToggle && isPenDown)
+        if (isPenDown)
         {
+            Debug.Log("rayCastToggle = true && isPenDown = true");
             if (Physics.Raycast(controlObj.transform.position, Vector3.down, out hit, 10))
             {
                 if (hit.collider.tag.Equals("drawsurface"))

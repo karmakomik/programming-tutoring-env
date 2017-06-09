@@ -18,18 +18,12 @@ public class PythonEngineScript : MonoBehaviour
     ScriptSource scriptSource;
     ScriptEngine scriptEngine;
     ScriptScope scriptScope;
-    Dictionary<string, string> syntaxHighLightDict;
+    //Dictionary<string, string> syntaxHighLightDict;
 
     // Use this for initialization
     void Start ()
     {
         //syntaxHighLightDict = new Dictionary<string, string>();
-#if UNITY_ANDROID
-        TouchScreenKeyboard keyboard;
-        TouchScreenKeyboard.hideInput = false;
-        if (!TouchScreenKeyboard.visible)
-            keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "xyz");
-#endif
         Dictionary<string, object> options = new Dictionary<string, object>();
         options["Debug"] = true;
         scriptEngine = IronPython.Hosting.Python.CreateEngine(options);
@@ -135,7 +129,7 @@ public class PythonEngineScript : MonoBehaviour
 
     public void onCodeChange()
     {
-        Debug.Log("rawcode - " + rawCodeInputField.text);
+        //Debug.Log("rawcode - " + rawCodeInputField.text);
         //if(codeEditor.text.Contains
         //codeEditorRichText.text = codeEditor.text;
         string richTxtCode = rawCodeInputField.text;
@@ -150,13 +144,8 @@ public class PythonEngineScript : MonoBehaviour
 
         richTextInputField.text = richTxtCode;
         richTextInputField.caretPosition = rawCodeInputField.caretPosition;
-        Debug.Log("rich text code - " + richTxtCode);
+        //Debug.Log("rich text code - " + richTxtCode);
         //richTextInputField.onValueChanged.AddListener(delegate { test(); });
-    }
-
-    public void test()
-    {
-        Debug.Log("test");
     }
 
     public void runCode()

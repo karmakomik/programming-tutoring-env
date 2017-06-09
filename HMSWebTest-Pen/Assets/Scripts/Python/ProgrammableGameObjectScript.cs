@@ -10,15 +10,25 @@ public class ProgrammableGameObjectScript : MonoBehaviour
     bool moveToNextCommand = false;
     Thread timerThread;
     Vector3 haathiPos;
-    Quaternion haathiRot;
+    //Quaternion haathiRot;
     bool isExecute = false;
     Vector3 haathiForwardFactVec = new Vector3(0, 0, 0);
+    public GameObject _pen;
 
     // Use this for initialization
     void Start()
     {
         //commList = new List<string>();
-        haathiPos = new Vector3(-3.18f, 0, -0.7f);
+        haathiPos = new Vector3(0, 0.08f, 4.58f);
+
+        //commList.Add("wait 1");
+        commList.Add("setPenColor #ff0000");
+        commList.Add("penDown");
+        commList.Add("move 300");
+        commList.Add("rotate 90");
+        commList.Add("penDown");
+        commList.Add("move 300");       
+
     }
 
     public void waitSecs(object arg)
@@ -72,7 +82,8 @@ public class ProgrammableGameObjectScript : MonoBehaviour
                 {
                     float dist = 0;
                     if (float.TryParse(currComm.Split(' ')[1], out dist)) { }
-                    move(dist);
+                    _pen.SendMessage("markControlObjPoint");
+                    move(dist);                    
                     commList.RemoveAt(0);
                 }
                 else if (currComm.StartsWith("rotate"))
@@ -94,9 +105,28 @@ public class ProgrammableGameObjectScript : MonoBehaviour
                     //Debug.Log("Call to wait done");
                     commList.RemoveAt(0);
                 }
+                else if (currComm.Equals("penDown"))
+                {
+                    _pen.SendMessage("setPenDownStatus", true);
+                    commList.RemoveAt(0);
+                }
+                else if (currComm.Equals("penUp"))
+                {
+                    _pen.SendMessage("setPenDownStatus", false);
+                    commList.RemoveAt(0);
+                }
+                else if (currComm.StartsWith("setPenColor"))
+                {
+                    string param = currComm.Split(' ')[1];
+                    Color penColor;
+                    ColorUtility.TryParseHtmlString(param, out penColor);
+                    _pen.SendMessage("setPenColor", penColor);
+                    commList.RemoveAt(0);
+                }
                 else
                 {
-                    Debug.Log("Unprocesssed");
+                    Debug.Log("Unprocesssed - " + currComm);
+                    commList.RemoveAt(0);
                 }
                 /*else if ()
                 {
