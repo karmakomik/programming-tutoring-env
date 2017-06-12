@@ -114,7 +114,7 @@ public class PythonEngineScript : MonoBehaviour
         {
             replaceStr = "<color=aqua>" + m.Value + "</color>";
         }
-        else if (m.Value.Contains("import") || m.Value.Contains("if") || m.Value.Contains("for") || m.Value.Contains("in") || m.Value.Contains("as") || m.Value.Contains("in") || m.Value.Contains("while"))
+        else if (m.Value.Contains("import") || m.Value.Contains("if") || m.Value.Contains("=") || m.Value.Contains("else") || m.Value.Contains("for") || m.Value.Contains("in") || m.Value.Contains("as") || m.Value.Contains("in") || m.Value.Contains("while"))
         {
             replaceStr = "<color=orange>" + m.Value + "</color>";
         }
@@ -135,7 +135,7 @@ public class PythonEngineScript : MonoBehaviour
         string richTxtCode = rawCodeInputField.text;
         //Debug.Log(richTxtCode.IndexOf("haathiObject"));
 
-        Regex pythonSyntaxRegEx = new Regex("(def )|(if )|(return )|(class )|(for )|(import )|(as )|(=)|(while )|(in )|(haathiObject)");
+        Regex pythonSyntaxRegEx = new Regex("(def )|(if )|(else[ :])|(return )|(class )|(for )|(import )|(as )|(=)|(while )|(in )|(haathiObject)");
         //([^a-zA-Z]def )|([^a-zA-Z]if )|([^a-zA-Z]return )|([^a-zA-Z]class )|([^a-zA-Z]import )|([^a-zA-Z]as )|(=)
 
         //richTxtCode = richTxtCode.Replace("haathiObject", "<b>haathiObject</b>");
