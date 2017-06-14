@@ -20,7 +20,7 @@ namespace Cubiquity
 			if(generateFloor)
 			{
 				// Create a floor so the volume data is actually visible in the editor.
-				int floorThickness = 8;
+				int floorThickness = 2;
 				QuantizedColor floorColor = new QuantizedColor(192, 192, 192, 255);
 				
 				for(int z = 0; z <= depth-1; z++)

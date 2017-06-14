@@ -29,7 +29,7 @@ public class GameControl : MonoBehaviour
     public Sprite soundOffSprite;
     public Sprite soundOnSprite;
 
-    public GameObject textCodeArea;
+    //public GameObject pythonCodeCanvas;
     bool showTextArea = false;
 
     public GameObject targetCircle;
@@ -141,7 +141,7 @@ public class GameControl : MonoBehaviour
 
     public void setPythonCanvasVisibility(bool state)
     {
-        textCodeArea.SetActive(state);
+        pythonCodeCanvas.SetActive(state);
         mainGameUICanvas.SetActive(!state);
     }
 
@@ -185,16 +185,16 @@ public class GameControl : MonoBehaviour
         exitPanel.SetActive(status);
     }
 
-    public void toggleTextCodeWindowVisibility()
+    /*public void toggleTextCodeWindowVisibility()
     {
         showTextArea = !showTextArea;
-        textCodeArea.SetActive(showTextArea);
+        pythonCodeCanvas.SetActive(showTextArea);
         /*if (showTextArea)
         {
-            textCodeArea.GetComponent<InputField>().ActivateInputField();
-            textCodeArea.GetComponent<InputField>().Select();
-        }*/
-    }
+            pythonCodeCanvas.GetComponent<InputField>().ActivateInputField();
+            pythonCodeCanvas.GetComponent<InputField>().Select();
+        //}
+    }*/
 
     public void showSpeechPanel(bool status)
     {

@@ -82,7 +82,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
                 {
                     float dist = 0;
                     if (float.TryParse(currComm.Split(' ')[1], out dist)) { }
-                    _pen.SendMessage("markControlObjPoint");
+                    //_pen.SendMessage("markControlObjPoint");
                     move(dist);                    
                     commList.RemoveAt(0);
                 }
