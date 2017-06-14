@@ -1,37 +1,7 @@
 ********************************************************************************
 *                             Initializing Cubiquity                           *
 ********************************************************************************
-[16:14:21, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
-[16:20:56, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/1FD52BE2.vdb'
-[16:21:01, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
-[16:21:36, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/639215C9.vdb'
-[16:21:40, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
-[16:21:43, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/6DB7A909.vdb'
-[16:22:00, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
-[16:22:00, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/77234CB3.vdb'
-[16:22:13, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
-[16:22:13, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/5E23DF39.vdb'
-[16:22:53, Info   ]: Resizing compressed data buffer to 144307bytes. This should only happen once
-[16:22:56, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/71BC5376.vdb'
-[16:23:05, Info   ]: Resizing compressed data buffer to 144307bytes. This should only happen once
-[16:23:05, Info   ]: Creating empty voxel database as 'C:/Users/UNNIKR~1/AppData/Local/Temp/Ammachi Labs/HMS Game/2A092FD9.vdb'
-[16:23:19, Info   ]: Resizing compressed data buffer to 144307bytes. This should only happen once
-[16:23:20, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Planet.vdb'
-[16:23:20, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Planet.vdb'
-[16:23:29, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Planet.vdb'
-[16:23:29, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Planet.vdb'
-[16:23:45, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
-[16:23:45, Info   ]: Resizing compressed data buffer to 288486bytes. This should only happen once
-[16:23:45, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Planet.vdb'
-[16:23:45, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Planet.vdb'
-[16:23:51, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Tests/SmallSphere.vdb'
-[16:23:55, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Tests/SmallSphere.vdb'
-[16:23:59, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/Tests/SmallSphere.vdb'
-[16:24:38, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
-[16:28:53, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
-[16:30:22, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
-[16:30:43, Info   ]: Resizing compressed data buffer to 144307bytes. This should only happen once
-[16:30:43, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
+[10:41:37, Info   ]: Creating voxel database from 'F:/Research/HMS/UnityProjects/HMS/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/Examples/VoxeliensColoredCubes.vdb'
 ********************************************************************************
 *                             Shutting down Cubiquity                          *
 ********************************************************************************
