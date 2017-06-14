@@ -19,7 +19,8 @@ public class GameControl : MonoBehaviour
     public GameObject exitPanel;
     public GameObject speechPanel;
 
-    public GameObject codeCanvas;
+    public GameObject visualCodeCanvas;
+    public GameObject pythonCodeCanvas;
     public GameObject mainGameUICanvas;
 
     public Button closeButton;
@@ -51,7 +52,8 @@ public class GameControl : MonoBehaviour
 
     void Start ()
     {
-        codeCanvas.SetActive(false);
+        visualCodeCanvas.SetActive(false);
+        pythonCodeCanvas.SetActive(false);
         mainGameUICanvas.SetActive(true);
         //commList = new List<string>();
         AudioListener.volume = 0; //Set BG volume to 0
@@ -133,7 +135,7 @@ public class GameControl : MonoBehaviour
 
     public void setCodeCanvasVisibility(bool state)
     {
-        codeCanvas.SetActive(state);
+        visualCodeCanvas.SetActive(state);
         mainGameUICanvas.SetActive(!state);
     }
 
