@@ -1397,6 +1397,10 @@ Prefab:
       propertyPath: m_Name
       value: BackButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1171939623921128, guid: 71052ae172a9307409c44d04b86fc277, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71052ae172a9307409c44d04b86fc277, type: 2}
   m_IsPrefabParent: 0
@@ -9410,6 +9414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   codePanel: {fileID: 149308092}
   _pen: {fileID: 1629929388}
+  coloredCubesVolumeObj: {fileID: 0}
 --- !u!1001 &1406714518
 Prefab:
   m_ObjectHideFlags: 0

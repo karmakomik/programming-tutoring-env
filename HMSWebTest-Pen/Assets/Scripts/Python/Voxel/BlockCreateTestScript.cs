@@ -17,15 +17,6 @@ public class BlockCreateTestScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.UpArrow))
-        {
-            Debug.Log("Up pressed");
-            for (int i = 0; i < 30; i++)
-            {
-                coloredCubesVolume.data.SetVoxel(50, i, 50, (QuantizedColor)Color.green);
-            }
-            
-            coloredCubesVolume.ForceUpdate();
-        }
+
     }
 }

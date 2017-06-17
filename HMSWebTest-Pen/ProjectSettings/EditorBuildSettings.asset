@@ -5,11 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/hms.unity
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Scenes/artsandbox.unity
+    guid: 274425ff9fe35404eb46d5e89bc48c41
   - enabled: 0
     path: Assets/Scenes/VisualCode.unity
+    guid: 74694f88b6244e04398b54ec5825d1db
   - enabled: 0
     path: Assets/Scenes/VisualCodeTest.unity
+    guid: 1471eb2efa3cfc94681ade5c58ca81fb
+  - enabled: 0
+    path: Assets/Scenes/HMSVoxelsScene.unity
+    guid: 27e7b0d67d20587448cea6ec64a40123
