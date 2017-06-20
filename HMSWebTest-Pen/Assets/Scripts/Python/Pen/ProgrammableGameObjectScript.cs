@@ -41,6 +41,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
             Debug.Log("upper corner - " + coloredCubesVolume.data.enclosingRegion.upperCorner);
             currActiveVoxel = getVoxelUnderneath();
             coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)Color.yellow);
+            //coloredCubesVolume.
         }
 
     }
@@ -246,7 +247,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
                 coloredCubesVolume.data.SetVoxel(0, i, 0, (QuantizedColor)Color.green);
             }
 
-            coloredCubesVolume.ForceUpdate();
+            //coloredCubesVolume.ForceUpdate();
         }
     }
 }

@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/hms.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/HMSPen.unity
+    guid: d094367b7cb86a540b63e3425fd8b337
   - enabled: 0
     path: Assets/Scenes/artsandbox.unity
     guid: 274425ff9fe35404eb46d5e89bc48c41
@@ -17,6 +17,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/VisualCodeTest.unity
     guid: 1471eb2efa3cfc94681ade5c58ca81fb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/HMSVoxelsScene.unity
     guid: 27e7b0d67d20587448cea6ec64a40123
