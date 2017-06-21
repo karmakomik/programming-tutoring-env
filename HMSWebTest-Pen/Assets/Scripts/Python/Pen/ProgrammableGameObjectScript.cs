@@ -18,6 +18,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
     public GameObject coloredCubesVolumeObj;
     ColoredCubesVolume coloredCubesVolume;
     Vector3i currActiveVoxel;
+    public GameObject transparentCube;
 
     // Use this for initialization
     void Start()
@@ -33,15 +34,22 @@ public class ProgrammableGameObjectScript : MonoBehaviour
         commList.Add("penDown");
         commList.Add("move 300");*/
 
-        coloredCubesVolume = coloredCubesVolumeObj.GetComponent<ColoredCubesVolume>();
+        if (coloredCubesVolumeObj != null)
+        {
+            coloredCubesVolume = coloredCubesVolumeObj.GetComponent<ColoredCubesVolume>();
+        }
         //coloredCubesVolume.data.enclosingRegion.
         if (coloredCubesVolume != null)
         {
             Debug.Log("lower corner - " + coloredCubesVolume.data.enclosingRegion.lowerCorner);
             Debug.Log("upper corner - " + coloredCubesVolume.data.enclosingRegion.upperCorner);
             currActiveVoxel = getVoxelUnderneath();
-            coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)Color.yellow);
+            moveVertically(1); //Move elephant one position up
+            transparentCube.transform.position = coloredCubesVolumeObj.transform.position + new Vector3(currActiveVoxel.x, currActiveVoxel.y + 1, currActiveVoxel.z);
+            //coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)Color.yellow);
             //coloredCubesVolume.
+
+            currActiveVoxel += new Vector3i(0, 1, 0);
         }
 
     }
@@ -83,6 +91,8 @@ public class ProgrammableGameObjectScript : MonoBehaviour
 
     }
 
+    int dir = 0; //0 = North, 1 = East, 2 = South, 3 = West
+
     public void executeCommands()
     {
         if (commList.Count > 0)
@@ -93,7 +103,41 @@ public class ProgrammableGameObjectScript : MonoBehaviour
             //Debug.Log("moveToNextCommand - " + moveToNextCommand);
             if (moveToNextCommand)
             {
-                if (currComm.StartsWith("move"))
+                if (currComm.StartsWith("moveForward"))
+                {
+                    switch (dir)
+                    {
+                        case 0: //NORTH
+                            currActiveVoxel += new Vector3i(0, 0, 1);
+                            break;
+                        case 1: //EAST
+                            currActiveVoxel += new Vector3i(1, 0, 0);
+                            break;
+                        case 2: //SOUTH
+                            currActiveVoxel += new Vector3i(0, 0, -1);
+                            break;
+                        case 3: //WEST
+                            currActiveVoxel += new Vector3i(-1, 0, 0);
+                            break;
+                    }
+                    //currActiveVoxel += new Vector3i(xFactor, yFactor, zFactor);
+                   
+                    moveForward(1);                    
+                    commList.RemoveAt(0);
+                }
+                else if (currComm.StartsWith("moveUp"))
+                {
+                    currActiveVoxel += new Vector3i(0, 1, 0);
+                    moveVertically(1);
+                    commList.RemoveAt(0);
+                }
+                else if (currComm.StartsWith("moveDown"))
+                {
+                    currActiveVoxel += new Vector3i(0, -1, 0);
+                    moveVertically(-1);
+                    commList.RemoveAt(0);
+                }
+                else if (currComm.StartsWith("move"))
                 {
                     float dist = 0;
                     if (float.TryParse(currComm.Split(' ')[1], out dist)) { }
@@ -101,9 +145,9 @@ public class ProgrammableGameObjectScript : MonoBehaviour
                     {
                         _pen.SendMessage("markControlObjPoint");
                     }
-                    currActiveVoxel = getVoxelUnderneath();
-                    coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)Color.yellow);
-                    move(dist);                    
+                    //currActiveVoxel = getVoxelUnderneath();
+                    //coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)Color.yellow);
+                    move(dist);
                     commList.RemoveAt(0);
                 }
                 else if (currComm.StartsWith("rotate"))
@@ -112,6 +156,32 @@ public class ProgrammableGameObjectScript : MonoBehaviour
                     if (float.TryParse(currComm.Split(' ')[1], out ang)) { }
                     rotate(ang);
                     commList.RemoveAt(0);
+                }
+                else if (currComm.StartsWith("turnLeft"))
+                {
+                    --dir;
+                    if (dir < 0)
+                    {
+                        dir = 3;
+                    }
+                    turnLeft();
+                    commList.RemoveAt(0);
+                }
+                else if (currComm.StartsWith("turnRight"))
+                {
+                    ++dir;
+                    if (dir > 3)
+                    {
+                        dir = 0;
+                    }
+                    turnRight();
+                    commList.RemoveAt(0);
+                }
+                else if (currComm.StartsWith("placeBlock"))
+                {
+                    placeBlock();
+                    commList.RemoveAt(0);
+                    //currActiveVoxel = new Vector3i(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z);
                 }
                 else if (currComm.StartsWith("wait"))
                 {
@@ -208,6 +278,35 @@ public class ProgrammableGameObjectScript : MonoBehaviour
         //transform.Translate(0, 0, units / 100);
         haathiForwardFactVec.Set(0, 0, units / 100);
         haathiPos = transform.localPosition + transform.TransformDirection(haathiForwardFactVec);
+    }
+
+    public void moveForward(int units)
+    {
+        haathiForwardFactVec.Set(0, 0, units);
+        haathiPos = transform.localPosition + transform.TransformDirection(haathiForwardFactVec);
+    }
+
+    public void moveVertically(int units)
+    {
+        haathiForwardFactVec.Set(0, units, 0);
+        haathiPos = transform.localPosition + transform.TransformDirection(haathiForwardFactVec);
+    }
+
+    public void turnRight()
+    {
+        rotate(90);
+    }
+
+    public void turnLeft()
+    {
+        rotate(-90);
+    }
+
+    public void placeBlock()
+    {
+        //currActiveVoxel = getVoxelUnderneath();
+        coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)Color.yellow);
+        //moveForward(1);
     }
 
     private IEnumerator _wait(float units)
