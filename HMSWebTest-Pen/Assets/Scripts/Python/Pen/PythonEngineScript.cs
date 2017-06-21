@@ -106,6 +106,18 @@ public class PythonEngineScript : MonoBehaviour
             "       self.haathiObjScript.addCommandToPool(\"setPenColor \" + str(color))",
             "   def isTouching(self, obj):",
             "       self.haathiObjScript.addCommandToPool(\"isTouching \" + str(obj))",
+            "   def moveForward(self):",
+            "       self.haathiObjScript.addCommandToPool(\"moveForward\")",
+            "   def moveUp(self):",
+            "       self.haathiObjScript.addCommandToPool(\"moveUp\")",
+            "   def moveDown(self):",
+            "       self.haathiObjScript.addCommandToPool(\"moveDown\")",
+            "   def turnRight(self):",
+            "       self.haathiObjScript.addCommandToPool(\"turnRight\")",
+            "   def turnLeft(self):",
+            "       self.haathiObjScript.addCommandToPool(\"turnLeft\")",
+            "   def placeBlock(self):",
+            "       self.haathiObjScript.addCommandToPool(\"placeBlock\")",
             "haathiObject = haathiClass()"
         };
         scriptSource = scriptEngine.CreateScriptSourceFromString(string.Join("\r", initPyCode));
