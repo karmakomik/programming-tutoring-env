@@ -1,7 +1,10 @@
 ********************************************************************************
 *                             Initializing Cubiquity                           *
 ********************************************************************************
-[20:18:58, Info   ]: Creating voxel database from 'E:/HMS/HMSBitBucketProjects/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/31F06D44.vdb'
+[14:38:57, Info   ]: Creating voxel database from 'E:/HMS/HMSBitBucketProjects/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/31F06D44.vdb'
+[14:39:13, Info   ]: Creating voxel database from 'E:/HMS/HMSBitBucketProjects/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/31F06D44.vdb'
+[14:43:01, Info   ]: Resizing compressed data buffer to 144307bytes. This should only happen once
+[14:43:02, Info   ]: Creating voxel database from 'E:/HMS/HMSBitBucketProjects/HMSWebTest-Pen/Assets/StreamingAssets/Cubiquity/VoxelDatabases/31F06D44.vdb'
 ********************************************************************************
 *                             Shutting down Cubiquity                          *
 ********************************************************************************
