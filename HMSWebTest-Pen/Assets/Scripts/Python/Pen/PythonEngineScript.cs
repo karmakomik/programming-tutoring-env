@@ -77,6 +77,16 @@ public class PythonEngineScript : MonoBehaviour
             "import System",
             "unity.Debug.Log(\"Python console initialized\")",
             "haathiObj = unity.GameObject.Find(\"haathi\")",
+            "class Color :",
+            "  red = \"#FF0000\"",
+            "  blue = \"#0000FF\"",
+            "  green = \"#00FF00\"",
+            "  cyan = \"#00FFFF\"",
+            "  magenta = \"#FF00FF\"",
+            "  gray = \"#888888\"",
+            "  grey = \"#888888\"",
+            "  white = \"#FFFFFF\"",
+            "  black = \"#000000\"",
             "class haathiClass:",
             "   \"This class acts as an interface with the Unity haathi object\"",
             "   def __init__(self):",
@@ -118,6 +128,10 @@ public class PythonEngineScript : MonoBehaviour
             "       self.haathiObjScript.addCommandToPool(\"turnLeft\")",
             "   def placeBlock(self):",
             "       self.haathiObjScript.addCommandToPool(\"placeBlock\")",
+            "   def clearBlock(self):",
+            "       self.haathiObjScript.addCommandToPool(\"clearBlock\")",
+            "   def setBlockColor(self, color):",
+            "       self.haathiObjScript.addCommandToPool(\"setBlockColor \" + str(color))",
             "haathiObject = haathiClass()"
         };
         scriptSource = scriptEngine.CreateScriptSourceFromString(string.Join("\r", initPyCode));
@@ -149,7 +163,7 @@ public class PythonEngineScript : MonoBehaviour
         }
         else 
         {
-            Debug.Log("matched");
+            //Debug.Log("matched");
             replaceStr = m.Value;
         }
 

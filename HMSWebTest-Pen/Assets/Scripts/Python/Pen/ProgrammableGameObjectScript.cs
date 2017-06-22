@@ -19,13 +19,14 @@ public class ProgrammableGameObjectScript : MonoBehaviour
     ColoredCubesVolume coloredCubesVolume;
     Vector3i currActiveVoxel;
     public GameObject transparentCube;
+    Color currBlockColor;
 
     // Use this for initialization
     void Start()
     {
         //commList = new List<string>();
         haathiPos = new Vector3(0, 0.08f, 4.58f);
-
+        currBlockColor = Color.yellow;
         //commList.Add("wait 1");
         /*commList.Add("setPenColor #ff0000");
         commList.Add("penDown");
@@ -122,19 +123,22 @@ public class ProgrammableGameObjectScript : MonoBehaviour
                     }
                     //currActiveVoxel += new Vector3i(xFactor, yFactor, zFactor);
                    
-                    moveForward(1);                    
+                    moveForward(1);
+                    //transparentCube.transform.position = transform.position + new Vector3(0, -1, 0);
                     commList.RemoveAt(0);
                 }
                 else if (currComm.StartsWith("moveUp"))
                 {
                     currActiveVoxel += new Vector3i(0, 1, 0);
                     moveVertically(1);
+                    //transparentCube.transform.position = transform.position + new Vector3(0, -1, 0);
                     commList.RemoveAt(0);
                 }
                 else if (currComm.StartsWith("moveDown"))
                 {
                     currActiveVoxel += new Vector3i(0, -1, 0);
                     moveVertically(-1);
+                    //transparentCube.transform.position = coloredCubesVolumeObj.transform.position + new Vector3(currActiveVoxel.x, currActiveVoxel.y + 1, currActiveVoxel.z);
                     commList.RemoveAt(0);
                 }
                 else if (currComm.StartsWith("move"))
@@ -209,6 +213,12 @@ public class ProgrammableGameObjectScript : MonoBehaviour
                     {
                         _pen.SendMessage("setPenDownStatus", false);
                     }
+                    commList.RemoveAt(0);
+                }
+                else if (currComm.StartsWith("setBlockColor"))
+                {
+                    string param = currComm.Split(' ')[1];                    
+                    ColorUtility.TryParseHtmlString(param, out currBlockColor);
                     commList.RemoveAt(0);
                 }
                 else if (currComm.StartsWith("setPenColor"))
@@ -305,7 +315,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
     public void placeBlock()
     {
         //currActiveVoxel = getVoxelUnderneath();
-        coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)Color.yellow);
+        coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)currBlockColor);
         //moveForward(1);
     }
 
