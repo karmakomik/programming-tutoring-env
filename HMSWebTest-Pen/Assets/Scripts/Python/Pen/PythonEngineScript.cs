@@ -31,6 +31,8 @@ public class PythonEngineScript : MonoBehaviour
 
     public Text fileNameText;
 
+    public InputField commandField;
+
     // Use this for initialization
     void Start ()
     {
@@ -71,6 +73,8 @@ public class PythonEngineScript : MonoBehaviour
         string[] initPyCode =
         {
             "import sys",
+            "sys.path.append(\"E:\\Program Files (x86)\\IronPython 2.7\\Lib\")",
+            "import random",
             "import UnityEngine as unity",
             "import ProgrammableGameObjectScript",
             "import PythonEngineScript",
@@ -87,6 +91,13 @@ public class PythonEngineScript : MonoBehaviour
             "  grey = \"#888888\"",
             "  white = \"#FFFFFF\"",
             "  black = \"#000000\"",
+            "  def __init__(self, red, green, blue):",
+		    "    self._red = red",
+            "    self._green = green",
+            "    self._blue = blue",
+            "    self.color = \"#\" + str(format(red, '02x')) + str(format(blue, '02x')) + str(format(green, '02x'))",
+            "  def __str__(self):",
+            "    return self.color",
             "class haathiClass:",
             "   \"This class acts as an interface with the Unity haathi object\"",
             "   def __init__(self):",
@@ -191,6 +202,15 @@ public class PythonEngineScript : MonoBehaviour
         //richTextInputField.onValueChanged.AddListener(delegate { test(); });
     }
 
+    public void runCommand(string command)
+    {
+        haathiObj.GetComponent<ProgrammableGameObjectScript>().clearCommandPool();
+        scriptSource = scriptEngine.CreateScriptSourceFromString(command);
+        scriptSource.Execute(scriptScope);
+        haathiObj.GetComponent<ProgrammableGameObjectScript>().startExecution();
+
+    }
+
     public void runCode()
     {
         haathiObj.GetComponent<ProgrammableGameObjectScript>().clearCommandPool();
@@ -210,7 +230,7 @@ public class PythonEngineScript : MonoBehaviour
             "",
         };
         //string.Join("\r", lines);
-        finalCode = string.Join("\r", lines) + pythonLines.ToString();
+        finalCode = /*string.Join("\r", lines) +*/ pythonLines.ToString();
         Debug.Log("Code typed is " + finalCode);
         scriptSource = scriptEngine.CreateScriptSourceFromString(finalCode);
         scriptSource.Execute(scriptScope);
