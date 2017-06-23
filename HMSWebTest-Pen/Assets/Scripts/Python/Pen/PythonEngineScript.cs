@@ -73,8 +73,8 @@ public class PythonEngineScript : MonoBehaviour
         string[] initPyCode =
         {
             "import sys",
-            "sys.path.append(\"E:\\Program Files (x86)\\IronPython 2.7\\Lib\")",
-            "import random",
+            //"sys.path.append(\"E:\\Program Files (x86)\\IronPython 2.7\\Lib\")",
+            //"import random",
             "import UnityEngine as unity",
             "import ProgrammableGameObjectScript",
             "import PythonEngineScript",
