@@ -7,9 +7,9 @@ namespace Cubiquity
 {
 	public class CreateEmptyColoredCubesVolumeDataAssetWizard : ScriptableWizard
 	{
-		public int width = 256;
-		public int height = 32;
-		public int depth = 256;
+		public int width = 5096;
+		public int height = 256;
+		public int depth = 5096;
 		
 		public bool generateFloor = true;
 		
