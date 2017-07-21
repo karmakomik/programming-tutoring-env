@@ -60,7 +60,7 @@ public class GameControl : MonoBehaviour
         changeTargetCircleColor(Color.red);
         //setTargetCircleVisible(true);
         targetCircle.SetActive(true);
-        targetArrow.SetActive(true);
+        //targetArrow.SetActive(true);
 
         //initializeInstructions();
 
@@ -153,7 +153,7 @@ public class GameControl : MonoBehaviour
             Debug.Log("Target reached");
             changeTargetCircleColor(Color.blue);
             targetCircle.SetActive(false);
-            targetArrow.SetActive(false);
+            //targetArrow.SetActive(false);
         }
         else
         {

@@ -127,7 +127,7 @@ public class PythonTest : MonoBehaviour
         }
         else 
         {
-            Debug.Log("matched");
+            //Debug.Log("matched");
             replaceStr = m.Value;
         }
 
@@ -136,7 +136,7 @@ public class PythonTest : MonoBehaviour
 
     public void onCodeChange()
     {
-        Debug.Log("rawcode - " + rawCodeInputField.text);
+        //Debug.Log("rawcode - " + rawCodeInputField.text);
         //if(codeEditor.text.Contains
         //codeEditorRichText.text = codeEditor.text;
         string richTxtCode = rawCodeInputField.text;
@@ -151,7 +151,7 @@ public class PythonTest : MonoBehaviour
 
         richTextInputField.text = richTxtCode;
         richTextInputField.caretPosition = rawCodeInputField.caretPosition;
-        Debug.Log("rich text code - " + richTxtCode);
+        //Debug.Log("rich text code - " + richTxtCode);
         //richTextInputField.onValueChanged.AddListener(delegate { test(); });
     }
 
@@ -179,8 +179,9 @@ public class PythonTest : MonoBehaviour
             "",
         };
         //string.Join("\r", lines);
-        string finalCode = string.Join("\r", lines) + pythonLines.ToString();
+        string finalCode = /*string.Join("\r", lines) +*/ pythonLines.ToString();
         Debug.Log("Code typed is " + finalCode);
+
         scriptSource = scriptEngine.CreateScriptSourceFromString(finalCode);
         scriptSource.Execute(scriptScope);
         haathiObj.GetComponent<CubeScript>().startExecution();

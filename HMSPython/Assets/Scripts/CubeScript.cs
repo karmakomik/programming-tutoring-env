@@ -64,7 +64,7 @@ public class CubeScript : MonoBehaviour
         {
             string currComm = commList[0];
 
-            //Debug.Log("Currently processing command - " + currComm);
+            Debug.Log("Currently processing command - " + currComm);
             //Debug.Log("moveToNextCommand - " + moveToNextCommand);
             if (moveToNextCommand)
             {
@@ -72,6 +72,7 @@ public class CubeScript : MonoBehaviour
                 {
                     float dist = 0;
                     if (float.TryParse(currComm.Split(' ')[1], out dist)){ }
+                    Debug.Log("move units - " + dist);
                     move(dist);
                     commList.RemoveAt(0);
                 }
@@ -132,8 +133,8 @@ public class CubeScript : MonoBehaviour
         //Debug.Log("Move");
         //StartCoroutine(_move(units));
         //transform.Translate(0, 0, units / 100);
-        haathiForwardFactVec.Set(0, 0, units / 100);
-        haathiPos = transform.localPosition + transform.TransformDirection(haathiForwardFactVec);
+        haathiForwardFactVec.Set(0, 0, units/100);
+        haathiPos = transform.position + transform.TransformDirection(haathiForwardFactVec);
     }
     
     private IEnumerator _wait(float units)
@@ -158,7 +159,7 @@ public class CubeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.localPosition = haathiPos;
+        transform.position = haathiPos;
 
         if (isExecute)
         {
