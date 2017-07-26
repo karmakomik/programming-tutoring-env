@@ -7,8 +7,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using Microsoft.Scripting.Hosting;
-//using System.IO;
-//using SFB;
+using System.IO;
+using SFB;
 
 public class PythonEngineScript : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class PythonEngineScript : MonoBehaviour
     string fileOpenTitle;
 
     public Text fileNameText;
-    public Text pyStatus;
+    //public Text pyStatus;
 
     public InputField commandField;
 
@@ -47,7 +47,7 @@ public class PythonEngineScript : MonoBehaviour
         //Dictionary<string, object> options = new Dictionary<string, object>();
         //options["Debug"] = true;
         scriptEngine = IronPython.Hosting.Python.CreateEngine();
-        pyStatus.text = "Python init 1";
+        //pyStatus.text = "Python init 1";
         scriptScope = scriptEngine.CreateScope();
 
         // load the assemblies for unity, using types    
@@ -61,7 +61,7 @@ public class PythonEngineScript : MonoBehaviour
         //string dllpath = System.IO.Path.GetDirectoryName((typeof(ScriptEngine)).Assembly.Location).Replace("\\", "/");
         // load needed modules and paths    
         init = new StringBuilder();
-        pyStatus.text = "Python init 2";
+        //pyStatus.text = "Python init 2";
         //init.AppendLine("cubeScriptComp.move(10)");
         //GameObject.Find("Cube").GetComponent<CubeScript>().move(10)
         //init.AppendLine("cube.transform.Translate(10, 0, 0)");
@@ -150,7 +150,7 @@ public class PythonEngineScript : MonoBehaviour
         try
         {
             scriptSource.Execute(scriptScope);
-            pyStatus.text = "Python initiliazed";
+            //pyStatus.text = "Python initiliazed";
         }
         catch (System.Exception e)
         {
@@ -210,7 +210,7 @@ public class PythonEngineScript : MonoBehaviour
         scriptSource = scriptEngine.CreateScriptSourceFromString(command);
         scriptSource.Execute(scriptScope);
         haathiObj.GetComponent<ProgrammableGameObjectScript>().startExecution();
-        pyStatus.text = "Run Command";
+        //pyStatus.text = "Run Command";
     }
 
     public void runCode()
@@ -236,12 +236,12 @@ public class PythonEngineScript : MonoBehaviour
         Debug.Log("Code typed is " + finalCode);
         scriptSource = scriptEngine.CreateScriptSourceFromString(finalCode);
         scriptSource.Execute(scriptScope);
-        pyStatus.text = "Run Code";
+        //pyStatus.text = "Run Code";
         haathiObj.GetComponent<ProgrammableGameObjectScript>().startExecution();
 
     }
 
-    /*public void saveFile()
+    public void saveFile()
     {
         //Directory.CreateDirectory(Application.dataPath + "/PythonCode");
         //File.WriteAllText(Application.dataPath + "/PythonCode" + "/sample.py", rawCodeInputField.text);
@@ -264,7 +264,7 @@ public class PythonEngineScript : MonoBehaviour
             rawCodeInputField.text = File.OpenText(path[0]).ReadToEnd();
             fileNameText.text = path[0].Substring(path[0].LastIndexOf("\\") + 1);
         }
-    }*/
+    }
 
     public void newFile()
     {
