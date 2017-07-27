@@ -18,7 +18,7 @@ public class CubeScript : MonoBehaviour
     void Start()
     {
         //commList = new List<string>();
-        haathiPos = new Vector3(-3.18f, 0, -0.7f);
+        haathiPos = transform.position;//new Vector3(-3.18f, 0, -0.7f);
     }
 
     public void waitSecs(object arg)
