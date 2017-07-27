@@ -7,6 +7,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
 using Microsoft.Scripting.Hosting;
+using System.IO;
+using SFB;
 
 public class PythonTest : MonoBehaviour
 {
@@ -20,16 +22,24 @@ public class PythonTest : MonoBehaviour
     ScriptScope scriptScope;
     Dictionary<string, string> syntaxHighLightDict;
 
+    string fileSaveTitle;
+    string fileDirectory;
+    string fileName;
+    string fileExtension;
+    string fileOpenTitle;
+
+    public Text fileNameText;
+
     // Use this for initialization
     void Start ()
     {
+        fileSaveTitle = "Save Python Code";
+        fileOpenTitle = "Open Python Code";
+        fileDirectory = Application.dataPath;
+        fileName = "Untitled";
+        fileExtension = "py";
+
         //syntaxHighLightDict = new Dictionary<string, string>();
-#if UNITY_ANDROID
-        TouchScreenKeyboard keyboard;
-        TouchScreenKeyboard.hideInput = false;
-        if (!TouchScreenKeyboard.visible)
-            keyboard = TouchScreenKeyboard.Open("", TouchScreenKeyboardType.Default, false, false, false, false, "xyz");
-#endif
         Dictionary<string, object> options = new Dictionary<string, object>();
         options["Debug"] = true;
         scriptEngine = IronPython.Hosting.Python.CreateEngine(options);
@@ -186,6 +196,37 @@ public class PythonTest : MonoBehaviour
         scriptSource.Execute(scriptScope);
         haathiObj.GetComponent<CubeScript>().startExecution();
 
+    }
+
+    public void saveFile()
+    {
+        //Directory.CreateDirectory(Application.dataPath + "/PythonCode");
+        //File.WriteAllText(Application.dataPath + "/PythonCode" + "/sample.py", rawCodeInputField.text);
+
+        var path = StandaloneFileBrowser.SaveFilePanel(fileSaveTitle, fileDirectory, fileName, fileExtension);
+        if (!string.IsNullOrEmpty(path))
+        {
+            File.WriteAllText(path, rawCodeInputField.text);
+            //Debug.Log("path : " + path);
+            //Debug.Log("filename = " + path.Substring(path.LastIndexOf("\\") + 1));
+            fileNameText.text = path.Substring(path.LastIndexOf("\\") + 1);
+        }
+    }
+
+    public void openFile()
+    {
+        var path = StandaloneFileBrowser.OpenFilePanel(fileOpenTitle, fileDirectory, fileExtension, false);
+        if (path.Length > 0)
+        {
+            rawCodeInputField.text = File.OpenText(path[0]).ReadToEnd();
+            fileNameText.text = path[0].Substring(path[0].LastIndexOf("\\") + 1);
+        }
+    }
+
+    public void newFile()
+    {
+        fileNameText.text = "*untitled.py";
+        rawCodeInputField.text = "";
     }
 
     // Update is called once per frame

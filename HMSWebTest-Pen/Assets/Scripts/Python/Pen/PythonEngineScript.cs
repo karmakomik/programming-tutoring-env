@@ -11,8 +11,7 @@ using System.IO;
 using SFB;
 
 public class PythonEngineScript : MonoBehaviour
-{
-    
+{    
     public GameObject haathiObj;
     public InputField rawCodeInputField;
     public InputField richTextInputField;
