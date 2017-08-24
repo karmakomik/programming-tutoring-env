@@ -35,7 +35,7 @@ public class CubeScript : MonoBehaviour
 
     public void addCommandToPool(string command)
     {
-        //Debug.Log("Command received - " + command);
+        Debug.Log("Command received - " + command);
         commList.Add(command);
     }
 
@@ -47,7 +47,7 @@ public class CubeScript : MonoBehaviour
     public void startExecution()
     {
         isExecute = true;
-        codePanel.SetActive(false);
+        //codePanel.SetActive(false);
         //Debug.Log("Commands given -  ");
         moveToNextCommand = true;
         //bool areAllCommandsProcessed = false;
@@ -123,8 +123,8 @@ public class CubeScript : MonoBehaviour
         }
         else
         {
-            isExecute = false;
-            codePanel.SetActive(true);
+            //isExecute = false;
+            //codePanel.SetActive(true);
         }
     }
 

@@ -20,7 +20,8 @@ public class PythonTest : MonoBehaviour
     ScriptSource scriptSource;
     ScriptEngine scriptEngine;
     ScriptScope scriptScope;
-    Dictionary<string, string> syntaxHighLightDict;
+    public static Dictionary<int, string> chiliCodeToPyCodeMapping; // chili tag ID -> python code
+
 
     string fileSaveTitle;
     string fileDirectory;
@@ -39,11 +40,21 @@ public class PythonTest : MonoBehaviour
         fileName = "Untitled";
         fileExtension = "py";
 
-        //syntaxHighLightDict = new Dictionary<string, string>();
+        chiliCodeToPyCodeMapping = new Dictionary<int, string>()
+        {
+            {23, "haathiObject.move(200)" },
+            {1, "haathiObject.rotate(90)" },
+            {27, "haathiObject.move(200)" },
+            {22, "haathiObject.move(200)" },
+            {4, "haathiObject.rotate(90)" }
+        };
+
+        //if(chiliCodeToPyCodeMapping[)
+
         Dictionary<string, object> options = new Dictionary<string, object>();
         options["Debug"] = true;
         scriptEngine = IronPython.Hosting.Python.CreateEngine(options);
-
+        //IronPython.Hosting.Python.CreateRuntime().UseFile
         scriptScope = scriptEngine.CreateScope();
 
         // load the assemblies for unity, using types    
@@ -75,12 +86,12 @@ public class PythonTest : MonoBehaviour
             "import PythonTest",
             "import System",
             "unity.Debug.Log(\"Python console initialized\")",
-            "haathiObj = unity.GameObject.Find(\"haathi\")",
+            "_haathiObj = unity.GameObject.Find(\"haathi\")",
             "class haathiClass:",
             "   \"This class acts as an interface with the Unity haathi object\"",
             "   def __init__(self):",
             "       unity.Debug.Log(\"haathi object initialized\")",
-            "       self.haathiObjScript = haathiObj.GetComponent[CubeScript]()",
+            "       self.haathiObjScript = _haathiObj.GetComponent[CubeScript]()",
             "   def move(self, units):",
             "       self.haathiObjScript.addCommandToPool(\"move \" + str(units))",
             "   def wait(self, units):",
@@ -106,6 +117,9 @@ public class PythonTest : MonoBehaviour
             "   def isTouching(self, obj):",
             "       self.haathiObjScript.addCommandToPool(\"isTouching \" + str(obj))",
             "haathiObject = haathiClass()",
+            "def pressLeftArrow():",
+            "   unity.Debug.Log(\"Left arrow key pressed in python\")",
+            "   haathiObject.rotate(-45)",
             "",
         };
         scriptSource = scriptEngine.CreateScriptSourceFromString(string.Join("\r", initPyCode));
@@ -208,7 +222,7 @@ public class PythonTest : MonoBehaviour
         {
             File.WriteAllText(path, rawCodeInputField.text);
             //Debug.Log("path : " + path);
-            //Debug.Log("filename = " + path.Substring(path.LastIndexOf("\\") + 1));
+            Debug.Log("filename = " + path.Substring(path.LastIndexOf("\\") + 1));
             fileNameText.text = path.Substring(path.LastIndexOf("\\") + 1);
         }
     }
@@ -230,8 +244,13 @@ public class PythonTest : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
-		
-	}
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            Debug.Log("Left arrow key pressed in C#");
+            scriptSource = scriptEngine.CreateScriptSourceFromString("pressLeftArrow()");
+            scriptSource.Execute(scriptScope);
+        }
+    }
 }

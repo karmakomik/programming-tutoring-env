@@ -9,9 +9,12 @@ using UnityEngine;
 //Line 183 - Data from device to unity
 //Line 96 - Data from unity to device
 
-public class GameCommPipeServer
+public class GameCommPipeServer : MonoBehaviour
 {
-	public int tag1Angle { get; private set;}
+    GameObject pyConnObj;
+    //
+    
+    public int tag1Angle { get; private set;}
 	public int tag1XPos { get; private set;}
 	bool pipingActive = true;
 	//static int count = 0;
@@ -57,8 +60,9 @@ public class GameCommPipeServer
 	}
 	
 	public void Start()
-	{	
-		this.listenThread = new Thread(new ThreadStart(ListenForClients));
+	{
+        pyConnObj = GameObject.Find("PythonConn");
+        this.listenThread = new Thread(new ThreadStart(ListenForClients));
 		this.listenThread.Start();		
 	}
 	
@@ -177,21 +181,26 @@ public class GameCommPipeServer
                 String[] splitMsg = incomingMsg.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
                 //Debug.Log("splitMsg size : " + splitMsg.Length);
 
-                if (splitMsg.Length == 6) //Largest empty rect coords coming in
+                if (splitMsg.Length == 6) 
                 {
-                    int msgType = int.Parse(splitMsg[0]);
+                    //int msgType = int.Parse(splitMsg[0]);
 
-                    if (msgType == 0) //Tag co-ords coming in    				
+                    //if (msgType == 0) //Tag co-ords coming in    				
+                    //{
+                    //Debug.Log("split msgs : " + splitMsg[1] + "," + splitMsg[3] + "," + splitMsg[4]);
+                    //tag1Angle = int.Parse(splitMsg[0]);
+                    //tag1XPos = int.Parse(splitMsg[1]);
+                    int tagid = int.Parse(splitMsg[1]);
+                    int angle = int.Parse(splitMsg[2]);
+                    int centerX = int.Parse(splitMsg[3]);
+                    int centerY = int.Parse(splitMsg[4]);
+                    int size = int.Parse(splitMsg[5]);
+
+                    if (PythonTest.chiliCodeToPyCodeMapping.ContainsKey(tagid))
                     {
-                        //Debug.Log("split msgs : " + splitMsg[0] + "," + splitMsg[2] + "," + splitMsg[3]);
-                        //tag1Angle = int.Parse(splitMsg[0]);
-                        //tag1XPos = int.Parse(splitMsg[1]);
-                        int tagid = int.Parse(splitMsg[1]);
-                        int angle = int.Parse(splitMsg[2]);
-                        int centerX = int.Parse(splitMsg[3]);
-                        int centerY = int.Parse(splitMsg[4]);
-                        int size = int.Parse(splitMsg[5]);
+                        Debug.Log(splitMsg[0] + ":" + PythonTest.chiliCodeToPyCodeMapping[tagid]);
                     }
+                    //}
 
                     buffer.Initialize();
                 }

@@ -25,9 +25,8 @@ public class CommScript : MonoBehaviour
 		PipeReadServer.Start();
         PipeWriteServer.Start();
         //PipeReadServer2.Start();
-
         //call chilitags app here
-        System.Diagnostics.Process.Start(@"F:\Research\HMS\CVTagDetectService\Release\CVTagDetectService.exe");
+        //System.Diagnostics.Process.Start(@"F:\Research\HMS\CVTagDetectService\Release\CVTagDetectService.exe");
 	}
 	
 	// Update is called once per frame
