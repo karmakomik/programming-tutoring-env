@@ -21,6 +21,7 @@ public class DragBlockScript : EventTrigger
     RectTransform loopMidRectTransform;
     RectTransform loopBottomRectTransform;
     public Transform rootParentTrans;
+    Transform blockCategoryPanelTrans;
     Vector3 startPos;
     GameObject childBlockObj = null;
     GameObject nestedChildBlockObj = null;
@@ -42,8 +43,8 @@ public class DragBlockScript : EventTrigger
         rectTrans = GetComponent<RectTransform>();
         rectTrans.GetWorldCorners(fourCornersTopRectArray);
         blockHeight = Mathf.Abs(fourCornersTopRectArray[0].y - fourCornersTopRectArray[2].y);
-        rootParentTrans = transform.parent;
-
+        rootParentTrans = transform.parent.parent; // Since they exist now inside different block categories, the root has to match to the grandpa element i.e "RootPanel"
+        blockCategoryPanelTrans = transform.parent; //Used to assign the clone of dragged blocks back to the original block category
 
         if (loopBottom != null)
         {
@@ -60,34 +61,38 @@ public class DragBlockScript : EventTrigger
     }
 
     void OnTriggerEnter2D(Collider2D other)
-    {        
-        if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock && isBeingDragged) // && gameObject.layer != 9)
+    {
+        Debug.Log("Collision with " + other);
+        if (!other.name.Equals("loopBottom"))
         {
-            if (other.GetType() == typeof(BoxCollider2D))
+            if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock && isBeingDragged) // && gameObject.layer != 9)
             {
-                Debug.Log("Collision with boxcollider");
-                
-            }
-            else if (other.GetType() == typeof(PolygonCollider2D))
-            {
-                collideWithLoopBottom = true;
-                Debug.Log("Collision with polygoncollider");
-            }
+                if (other.GetType() == typeof(BoxCollider2D))
+                {
+                    Debug.Log("Collision with boxcollider");
 
-            //Debug.Log("On trigger enter : " + other.transform.name);
-            isCollide = true;
-            collidedObj = other.transform.gameObject;
-            emptyBlock.SetActive(true);
-            emptyBlock.transform.SetSiblingIndex(transform.parent.childCount - 2);
-            /*if (other.transform.position.y >= transform.position.y)
-            {
-                emptyBlock.transform.position = other.transform.position + new Vector3(0, -blockHeight / 2.5f, 0);
-            }
-            else
-            {
+                }
+                else if (other.GetType() == typeof(PolygonCollider2D))
+                {
+                    collideWithLoopBottom = true;
+                    Debug.Log("Collision with polygoncollider");
+                }
 
-                emptyBlock.transform.position = other.transform.position - new Vector3(0, -blockHeight / 3f, 0);
-            }*/
+                //Debug.Log("On trigger enter : " + other.transform.name);
+                isCollide = true;
+                collidedObj = other.transform.gameObject;
+                emptyBlock.SetActive(true);
+                emptyBlock.transform.SetSiblingIndex(transform.parent.childCount - 2);
+                /*if (other.transform.position.y >= transform.position.y)
+                {
+                    emptyBlock.transform.position = other.transform.position + new Vector3(0, -blockHeight / 2.5f, 0);
+                }
+                else
+                {
+
+                    emptyBlock.transform.position = other.transform.position - new Vector3(0, -blockHeight / 3f, 0);
+                }*/
+            }
         }
     }
 
@@ -99,13 +104,16 @@ public class DragBlockScript : EventTrigger
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock)
+        if (!other.name.Equals("loopBottom"))
         {
-            collideWithLoopBottom = false;
-            isCollide = false;
-            collidedObj = null;
-            emptyBlock.SetActive(false);
-            //Debug.Log("On trigger exit : " + other.transform.name);
+            if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock)
+            {
+                collideWithLoopBottom = false;
+                isCollide = false;
+                collidedObj = null;
+                emptyBlock.SetActive(false);
+                //Debug.Log("On trigger exit : " + other.transform.name);
+            }
         }
     }
 
@@ -176,18 +184,22 @@ public class DragBlockScript : EventTrigger
         float heightOfChildBlocks = getHeightOfChildBlocks(gameObject);
         if (transform.parent != rootParentTrans)
         {
-            if (transform.parent.GetComponent<DragBlockScript>().loopBottom != null) //immediate parent is a loop block
+            //Debug.Log("Current parent is - " + transform.parent);
+            if (transform.parent.GetComponent<DragBlockScript>() != null)
             {
-                if (transform.parent.GetComponent<DragBlockScript>().getNestedChildBlockObj() == gameObject)
+                if (transform.parent.GetComponent<DragBlockScript>().loopBottom != null) //immediate parent is a loop block
                 {
-                    Debug.Log("Shrinking loop to default state");
-                    transform.parent.GetComponent<DragBlockScript>().elongateVertically((heightOfChildBlocks / 2) + (heightOfChildBlocks / 5.75f) - transform.parent.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
+                    if (transform.parent.GetComponent<DragBlockScript>().getNestedChildBlockObj() == gameObject)
+                    {
+                        Debug.Log("Shrinking loop to default state");
+                        transform.parent.GetComponent<DragBlockScript>().elongateVertically((heightOfChildBlocks / 2) + (heightOfChildBlocks / 5.75f) - transform.parent.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
+                    }
                 }
-            }
-            else
-            {
-                Debug.Log("Shrinking loop");
-                transform.parent.GetComponent<DragBlockScript>().elongateVertically((heightOfChildBlocks / 2) + (heightOfChildBlocks / 5.75f));
+                else
+                {
+                    Debug.Log("Shrinking loop");
+                    transform.parent.GetComponent<DragBlockScript>().elongateVertically((heightOfChildBlocks / 2) + (heightOfChildBlocks / 5.75f));
+                }
             }
         }
 
@@ -205,7 +217,7 @@ public class DragBlockScript : EventTrigger
         }
         catch (System.Exception e)
         {
-            //Debug.Log("Parent is root. No DragScript component attached.");
+            Debug.Log("Parent is root. No DragScript component attached.");
         }
         //isBlockFinishDragging = true;
         transform.SetParent(rootParentTrans);
@@ -213,14 +225,14 @@ public class DragBlockScript : EventTrigger
         if (isOriginBlock)//if (transform.parent.name.Equals("CommandSelectionPanel"))
         {
             //Debug.Log("Parent is CommandSelectionPanel");
-            GameObject clone = Instantiate(gameObject, transform.parent); 
+            GameObject clone = Instantiate(gameObject, blockCategoryPanelTrans); 
             clone.name = gameObject.name; //Instead of the clone name being by default the string gameObject.name + "(clone)"
             clone.transform.position = startPos;
             isOriginBlock = false;
             clone.GetComponent<DragBlockScript>().isOriginBlock = true;
             //clone.GetComponent<RectTransform>().sizeDelta = new Vector2(0.4f, 0.4f);
             //clone.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-            clone.transform.SetParent(transform.parent);
+            clone.transform.SetParent(blockCategoryPanelTrans);
         }
         transform.SetAsLastSibling();
 
@@ -339,7 +351,8 @@ public class DragBlockScript : EventTrigger
                     {
                         //collidedObj.GetComponent<DragBlockScript>().loopEndRectTransform.localPosition += new Vector3(0, -1.9f * blockHeight, 0);
                         collidedObj.GetComponent<DragBlockScript>().elongateVertically((-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
-                        collidedObj.GetComponent<PolygonCollider2D>().offset -= new Vector2(0, (-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
+                        Debug.Log("Offset magnitude - " + ((-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock));
+                        //collidedObj.GetComponent<PolygonCollider2D>().offset -= new Vector2(0, 45);//new Vector2(0, (-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
                     }
                     else
                     {
