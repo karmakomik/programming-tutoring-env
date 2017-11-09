@@ -62,7 +62,7 @@ public class DragBlockScript : EventTrigger
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collision with " + other);
+        //Debug.Log("Collision with " + other);
         if (!other.name.Equals("loopBottom"))
         {
             if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock && isBeingDragged) // && gameObject.layer != 9)
@@ -217,7 +217,7 @@ public class DragBlockScript : EventTrigger
         }
         catch (System.Exception e)
         {
-            Debug.Log("Parent is root. No DragScript component attached.");
+            //Debug.Log("Parent is root. No DragScript component attached.");
         }
         //isBlockFinishDragging = true;
         transform.SetParent(rootParentTrans);
@@ -351,7 +351,7 @@ public class DragBlockScript : EventTrigger
                     {
                         //collidedObj.GetComponent<DragBlockScript>().loopEndRectTransform.localPosition += new Vector3(0, -1.9f * blockHeight, 0);
                         collidedObj.GetComponent<DragBlockScript>().elongateVertically((-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
-                        Debug.Log("Offset magnitude - " + ((-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock));
+                        //Debug.Log("Offset magnitude - " + ((-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock));
                         //collidedObj.GetComponent<PolygonCollider2D>().offset -= new Vector2(0, 45);//new Vector2(0, (-heightOfChildBlocks / 2) - (heightOfChildBlocks / 5.75f) + collidedObj.GetComponent<DragBlockScript>().defaultHeightGapRepeatBlock);
                     }
                     else
