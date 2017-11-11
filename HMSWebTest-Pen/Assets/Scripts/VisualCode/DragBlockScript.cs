@@ -80,7 +80,8 @@ public class DragBlockScript : EventTrigger
 
                 //Debug.Log("On trigger enter : " + other.transform.name);
                 isCollide = true;
-                collidedObj = other.transform.gameObject;
+                
+
                 emptyBlock.SetActive(true);
                 emptyBlock.transform.SetSiblingIndex(transform.parent.childCount - 2);
                 /*if (other.transform.position.y >= transform.position.y)
@@ -93,6 +94,18 @@ public class DragBlockScript : EventTrigger
                     emptyBlock.transform.position = other.transform.position - new Vector3(0, -blockHeight / 3f, 0);
                 }*/
             }
+        }
+        else
+        {
+            if (other.GetType() == typeof(PolygonCollider2D))
+            {
+                Debug.Log("Loop bottom trigger enter");
+                collideWithLoopBottom = true;
+                Debug.Log("Collision with polygoncollider");
+                isCollide = true;
+                //collidedObj = other.transform.parent.gameObject;
+            }
+            
         }
     }
 
@@ -108,12 +121,19 @@ public class DragBlockScript : EventTrigger
         {
             if (!other.GetComponent<DragBlockScript>().isOriginBlock && !isOriginBlock)
             {
-                collideWithLoopBottom = false;
+                //collideWithLoopBottom = false;
                 isCollide = false;
                 collidedObj = null;
                 emptyBlock.SetActive(false);
                 //Debug.Log("On trigger exit : " + other.transform.name);
             }
+        }
+        else
+        {
+            Debug.Log("Loop bottom trigger exit");
+            collideWithLoopBottom = false;
+            isCollide = false;
+            collidedObj = null;
         }
     }
 
@@ -332,7 +352,7 @@ public class DragBlockScript : EventTrigger
                 defaultHeightGapRepeatBlock = Mathf.Abs(fourCornersTopRectArray[0].y - fourCornersBottomRectArray[1].y);
             }*/
 
-            if (collideWithLoopBottom && collidedObj.name == "repeatBlock")
+            if (collideWithLoopBottom)// && collidedObj.name == "repeatBlock")
             {
                 //Debug.Log("Set block below loopend recttransform");
                 transform.position = new Vector3(collidedObj.transform.position.x, collidedObj.GetComponent<DragBlockScript>().loopBottomRectTransform.position.y - blockHeight / 2 - blockGap, 0);
