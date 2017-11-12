@@ -80,8 +80,8 @@ public class DragBlockScript : EventTrigger
 
                 //Debug.Log("On trigger enter : " + other.transform.name);
                 isCollide = true;
-                
-
+                collidedObj = other.transform.gameObject;
+                collideWithLoopBottom = false;
                 emptyBlock.SetActive(true);
                 emptyBlock.transform.SetSiblingIndex(transform.parent.childCount - 2);
                 /*if (other.transform.position.y >= transform.position.y)
@@ -99,11 +99,11 @@ public class DragBlockScript : EventTrigger
         {
             if (other.GetType() == typeof(PolygonCollider2D))
             {
-                Debug.Log("Loop bottom trigger enter");
+                //Debug.Log("Loop bottom trigger enter");
                 collideWithLoopBottom = true;
                 Debug.Log("Collision with polygoncollider");
                 isCollide = true;
-                //collidedObj = other.transform.parent.gameObject;
+                collidedObj = other.transform.parent.gameObject;
             }
             
         }
@@ -130,7 +130,7 @@ public class DragBlockScript : EventTrigger
         }
         else
         {
-            Debug.Log("Loop bottom trigger exit");
+            //Debug.Log("Loop bottom trigger exit");
             collideWithLoopBottom = false;
             isCollide = false;
             collidedObj = null;
