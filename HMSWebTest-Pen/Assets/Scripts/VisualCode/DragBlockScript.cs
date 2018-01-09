@@ -366,7 +366,7 @@ public class DragBlockScript : EventTrigger
                 if (collidedObj.name == "repeatBlock")
                 {
                     Debug.Log("Inserted inside loop");
-                    transform.position = collidedObj.transform.position + new Vector3(blockHeight / 3, -blockHeight / 2 - blockGap, 0);
+                    transform.position = collidedObj.transform.position + new Vector3(blockHeight / 3 - blockHeight / 24, -blockHeight / 2 - blockGap, 0);
                     if (collidedObj.GetComponent<DragBlockScript>().getChildBlockObj() == null) //Repeat block has no children thus far
                     {
                         //collidedObj.GetComponent<DragBlockScript>().loopEndRectTransform.localPosition += new Vector3(0, -1.9f * blockHeight, 0);

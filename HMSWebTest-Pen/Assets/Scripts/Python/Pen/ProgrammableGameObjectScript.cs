@@ -348,7 +348,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
             executeCommands();
         }
 
-        if (Input.GetKeyUp(KeyCode.UpArrow))
+       /* if (Input.GetKeyUp(KeyCode.UpArrow))
         {
             Debug.Log("Up pressed");
             for (int i = 0; i < 30; i++)
@@ -357,7 +357,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
             }
 
             //coloredCubesVolume.ForceUpdate();
-        }
+        }*/
     }
 }
 
