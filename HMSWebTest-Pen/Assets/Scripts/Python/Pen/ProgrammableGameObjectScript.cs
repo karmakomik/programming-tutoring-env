@@ -20,6 +20,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
     Vector3i currActiveVoxel;
     public GameObject transparentCube;
     Color currBlockColor;
+    public GameObject rotor;
 
     // Use this for initialization
     void Start()
@@ -338,6 +339,11 @@ public class ProgrammableGameObjectScript : MonoBehaviour
         StartCoroutine(_wait(time));
     }
 
+    void startRotor()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -347,6 +353,8 @@ public class ProgrammableGameObjectScript : MonoBehaviour
         {
             executeCommands();
         }
+
+        rotor.transform.Rotate(0, Time.deltaTime * 1000, 0);
 
        /* if (Input.GetKeyUp(KeyCode.UpArrow))
         {

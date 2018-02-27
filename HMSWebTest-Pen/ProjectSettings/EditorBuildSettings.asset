@@ -5,21 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HMSPen.unity
     guid: d094367b7cb86a540b63e3425fd8b337
   - enabled: 0
-    path: Assets/Scenes/artsandbox.unity
+    path: Assets/Scenes/OldScenes/artsandbox.unity
     guid: 274425ff9fe35404eb46d5e89bc48c41
   - enabled: 0
-    path: Assets/Scenes/VisualCode.unity
+    path: Assets/Scenes/OldScenes/VisualCode.unity
     guid: 74694f88b6244e04398b54ec5825d1db
   - enabled: 0
-    path: Assets/Scenes/VisualCodeTest.unity
+    path: Assets/Scenes/OldScenes/VisualCodeTest.unity
     guid: 1471eb2efa3cfc94681ade5c58ca81fb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/HMSVoxelsScene.unity
     guid: 27e7b0d67d20587448cea6ec64a40123
   - enabled: 0
-    path: Assets/Scenes/HMSGrid.unity
+    path: Assets/Scenes/OldScenes/HMSGrid.unity
     guid: 0a0c79977d22d014abf7b0a30b19664a
