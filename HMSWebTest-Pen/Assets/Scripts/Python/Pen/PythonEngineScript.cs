@@ -143,7 +143,11 @@ public class PythonEngineScript : MonoBehaviour
             "       self.haathiObjScript.addCommandToPool(\"clearBlock\")",
             "   def setBlockColor(self, color):",
             "       self.haathiObjScript.addCommandToPool(\"setBlockColor \" + str(color))",
-            "haathiObject = haathiClass()"
+            "haathiObject = haathiClass()",
+            "def pressLeftArrow():",
+            "   unity.Debug.Log(\"Left arrow key pressed in python\")",
+            "   haathiObject.rotate(-45)",
+            "",
         };
         scriptSource = scriptEngine.CreateScriptSourceFromString(string.Join("\r", initPyCode));
         try
@@ -274,6 +278,11 @@ public class PythonEngineScript : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-		
-	}
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            Debug.Log("Left arrow key pressed in C#");
+            scriptSource = scriptEngine.CreateScriptSourceFromString("pressLeftArrow()");
+            scriptSource.Execute(scriptScope);
+        }
+    }
 }
