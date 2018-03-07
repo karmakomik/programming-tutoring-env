@@ -118,7 +118,7 @@ public class PythonEngineScript : MonoBehaviour
             "   def changeColor(self, color):",
             "       self.haathiObjScript.addCommandToPool(\"changeColor \" + str(color))",
             "   def playSound(self, sound):",
-            "       self.haathiObjScript.addCommandToPool(\"playSound \" + str(sound))",
+            "       self.haathiObjScript.  addCommandToPool(\"playSound \" + str(sound))",
             "   def penDown(self):",
             "       self.haathiObjScript.addCommandToPool(\"penDown\")",
             "   def penUp(self):",
@@ -146,6 +146,8 @@ public class PythonEngineScript : MonoBehaviour
             "haathiObject = haathiClass()",
             "def pressLeftArrow():",
             "   unity.Debug.Log(\"Left arrow key pressed in python\")",
+            "   rt = dir(haathiClass)",
+            "   unity.Debug.Log(str(rt))",
             "   haathiObject.rotate(-45)",
             "",
         };
@@ -188,6 +190,7 @@ public class PythonEngineScript : MonoBehaviour
 
     public void onCodeChange()
     {
+        //Debug.Log("incoming val : " + val);
         //Debug.Log("rawcode - " + rawCodeInputField.text);
         //if(codeEditor.text.Contains
         //codeEditorRichText.text = codeEditor.text;

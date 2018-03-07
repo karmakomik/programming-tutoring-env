@@ -12,9 +12,9 @@ public class CameraController : MonoBehaviour
     public Camera camera;
     public float perspectiveZoomSpeed = 0.5f;        // The rate of change of the field of view in perspective mode.
 
-    float camOffsetXFactor = 7.5f;
-    float camOffsetZFactor = 7.5f;
-    float camOffsetYFactor = 6f;
+    float camOffsetXFactor = 25f;
+    float camOffsetZFactor = 25f;
+    float camOffsetYFactor = 20f;
 
     Vector2 camOffset;
     Vector2 camOffsetDest;

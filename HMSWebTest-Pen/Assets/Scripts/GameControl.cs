@@ -56,7 +56,7 @@ public class GameControl : MonoBehaviour
         pythonCodeCanvas.SetActive(false);
         mainGameUICanvas.SetActive(true);
         //commList = new List<string>();
-        AudioListener.volume = 0; //Set BG volume to 0
+        AudioListener.volume = 0.1f; //Set BG volume to 0
         changeTargetCircleColor(Color.red);
         //setTargetCircleVisible(true);
         targetCircle.SetActive(true);
