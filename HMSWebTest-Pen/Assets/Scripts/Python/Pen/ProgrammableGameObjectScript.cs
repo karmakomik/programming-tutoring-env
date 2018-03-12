@@ -273,7 +273,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
         PickVoxelResult pickResult;
         bool hit = Picking.PickFirstSolidVoxel(coloredCubesVolume, ray, 100.0f, out pickResult);
         Vector3i hitVoxelAddress = new Vector3i();
-        // If we hit a solid voxel then create an explosion at this point.
+        
         if (hit)
         {
             hitVoxelAddress = new Vector3i(pickResult.volumeSpacePos.x, pickResult.volumeSpacePos.y, pickResult.volumeSpacePos.z);
