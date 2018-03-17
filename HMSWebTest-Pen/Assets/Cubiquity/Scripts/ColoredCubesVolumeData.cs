@@ -95,9 +95,14 @@ namespace Cubiquity
 			{
 				try
 				{
-					// Create an empty region of the desired size.
-					volumeHandle = CubiquityDLL.NewEmptyColoredCubesVolume(region.lowerCorner.x, region.lowerCorner.y, region.lowerCorner.z,
+                    // Create an empty region of the desired size.
+                    //volumeHandle = CubiquityDLL.NewEmptyColoredCubesVolume(0, 0, 0, 1023, 255, 1023, fullPathToVoxelDatabase, DefaultBaseNodeSize); 
+
+                    volumeHandle = CubiquityDLL.NewEmptyColoredCubesVolume(region.lowerCorner.x, region.lowerCorner.y, region.lowerCorner.z,
 						region.upperCorner.x, region.upperCorner.y, region.upperCorner.z, fullPathToVoxelDatabase, DefaultBaseNodeSize);
+
+                    Debug.Log("Volume dimensions : lowerCorner.x = " + region.lowerCorner.x + "  lowerCorner.y = " + region.lowerCorner.y + " lowerCorner.z = " +  region.lowerCorner.z + " upperCorner.x = " + 
+                        region.upperCorner.x + " upperCorner.y = " + region.upperCorner.y + " upperCorner.z = " + region.upperCorner.z);
 				}
 				catch(CubiquityException exception)
 				{

@@ -292,10 +292,12 @@ namespace Cubiquity
 				volumeData.relativePathToVoxelDatabase = pathToVoxelDatabase;
 				volumeData.writePermissions = WritePermissions.ReadWrite;
 			}
-			
-			volumeData.InitializeEmptyCubiquityVolume(region);
+            //region = new Region(0, 0, 0, 1023, 255, 1023);
 
-			volumeData.RegisterPath();
+            volumeData.InitializeEmptyCubiquityVolume(region);
+            //ColoredCubesVolumeData data = VolumeData.CreateEmptyVolumeData<ColoredCubesVolumeData>(new Region(0, 0, 0, width-1, height-1, depth-1));
+
+            volumeData.RegisterPath();
 			
 			return volumeData;
 		}

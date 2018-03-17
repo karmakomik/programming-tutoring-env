@@ -60,9 +60,9 @@ namespace Cubiquity
 		[MenuItem ("GameObject/Create Other/Colored Cubes Volume")]
 		static void CreateColoredCubesVolume()
 		{
-			int width = 256;
-			int height = 32;
-			int depth = 256;
+			int width = 512;
+			int height = 64;
+			int depth = 512;
 			
 			ColoredCubesVolumeData data = VolumeDataAsset.CreateEmptyVolumeData<ColoredCubesVolumeData>(new Region(0, 0, 0, width-1, height-1, depth-1));
 			
@@ -71,7 +71,7 @@ namespace Cubiquity
 			// And select it, so the user can get straight on with editing.
 			Selection.activeGameObject = coloredCubesGameObject;
 			
-			int floorThickness = 8;
+			int floorThickness = 1;
 			QuantizedColor floorColor = new QuantizedColor(192, 192, 192, 255);
 			
 			for(int z = 0; z <= depth-1; z++)

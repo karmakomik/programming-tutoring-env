@@ -45,10 +45,19 @@ public class ProgrammableGameObjectScript : MonoBehaviour
         {
             Debug.Log("lower corner - " + coloredCubesVolume.data.enclosingRegion.lowerCorner);
             Debug.Log("upper corner - " + coloredCubesVolume.data.enclosingRegion.upperCorner);
-            currActiveVoxel = getVoxelUnderneath();
+
+            Vector3i offset = (Vector3i) (transform.position - coloredCubesVolumeObj.transform.position);
+            Debug.Log("offset : " + offset);
+
+            currActiveVoxel = offset;// getVoxelUnderneath();
+            getVoxelUnderneath();
             moveVertically(1); //Move elephant one position up
             transparentCube.transform.position = coloredCubesVolumeObj.transform.position + new Vector3(currActiveVoxel.x, currActiveVoxel.y + 1, currActiveVoxel.z);
-            //coloredCubesVolume.data.SetVoxel(currActiveVoxel.x, currActiveVoxel.y, currActiveVoxel.z, (QuantizedColor)Color.yellow);
+            /*for (int i = 512; i < 560; i++)
+            {
+                coloredCubesVolume.data.SetVoxel(i, 10, 512, (QuantizedColor)Color.yellow);
+
+            }*/
             //coloredCubesVolume.
 
             currActiveVoxel += new Vector3i(0, 1, 0);

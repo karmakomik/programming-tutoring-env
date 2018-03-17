@@ -16,7 +16,7 @@ namespace Cubiquity
 		void OnWizardCreate()
 		{
 	        TerrainVolumeData data = VolumeDataAsset.CreateEmptyVolumeData<TerrainVolumeData>(new Region(0, 0, 0, width-1, height-1, depth-1));
-			
+            Debug.Log("Ping");
 			if(generateFloor)
 			{
 				// Create some ground in the terrain so it shows up in the editor.
