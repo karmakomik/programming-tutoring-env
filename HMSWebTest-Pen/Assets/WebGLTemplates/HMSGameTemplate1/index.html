@@ -1,0 +1,73 @@
+<!-- 
+Haathi Mera Saathi Web Test
+Author : Unnikrishnan R, Ammachi Labs
+Description: This file adds Unity WebGL code and combines it with blockly 
+Date started : 16th July 2016
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <title>%UNITY_WEB_NAME%</title>
+    <script src="google-blockly/blockly_compressed.js"></script>
+    <script src="google-blockly/javascript_compressed.js"></script>
+    <script src="google-blockly/blocks_compressed.js"></script>
+    <script src="google-blockly/msg/js/en.js"></script>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+    <link rel="stylesheet" href="css/style.css">  
+</head>
+<body onload="startupOps()">
+    <xml id="toolbox" style="display: none">
+      <category name="Control" colour="170">
+        <block type="controls_if"></block>
+        <block type="controls_repeat_ext"></block>
+        <block type="math_number"></block>
+      </category>
+      <category name="Looks" colour="270">
+        <block type="hms_looks_say"></block>
+        <block type="hms_looks_say_for_time"></block>
+        <block type="hms_looks_think"></block>
+        <block type="hms_looks_think_for_time"></block> 
+        <block type="hms_looks_change_costume"></block>  
+        <block type="hms_looks_show"></block> 
+        <block type="hms_looks_hide"></block> 
+      </category> 
+      <category name="Motion" colour="210">
+        <block type="hms_motion_turnleft"></block>
+        <block type="hms_motion_turnright"></block>
+        <block type="hms_motion_moveforward"></block>
+        <block type="hms_motion_eat"></block> 
+        <block type="hms_motion_turn_clockwise"></block>
+        <block type="hms_motion_turn_anti_clockwise"></block>     
+      </category>
+      <category name="Pen" colour="90">
+        <block type="hms_pen_down"></block>
+        <block type="hms_pen_up"></block>
+        <block type="hms_pen_clear"></block>
+        <block type="hms_pen_set_color"></block>
+        <block type="hms_pen_set_size"></block>
+      </category>    
+      <category name="Sounds" colour="315">
+        <block type="hms_sounds_play"></block>
+      </category> 
+      <category name="Events" colour="30">
+        <block type="hms_events_when_object_clicked"></block>
+      </category>       
+    </xml> 
+    
+    <div id = "canvasDiv">  
+        <canvas id="canvas"></canvas>
+        <a id="logo" onclick="evalCode()" target="_blank"><img src="http://static.playcanvas.com/images/logo/PLAY_FLAT_ORANGE3_SMALL.png" /></a> 
+        <div id="blocklyDiv"></div>   
+    </div>    
+    
+    %UNITY_WEBGL_LOADER_GLUE%
+</body>
+
+<script src="js/blocklyInject.js"></script> <!-- Include blockly injection code only at the end -->
+<script src="js/hms_sounds_def.js"></script>
+<script src="js/hms_pen_def.js"></script>
+<script src="js/hms_motion_def.js"></script>    
+<script src="js/hms_looks_def.js"></script> 
+</html>

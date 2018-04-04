@@ -46,7 +46,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
             Debug.Log("lower corner - " + coloredCubesVolume.data.enclosingRegion.lowerCorner);
             Debug.Log("upper corner - " + coloredCubesVolume.data.enclosingRegion.upperCorner);
 
-            Vector3i offset = (Vector3i) (transform.position - coloredCubesVolumeObj.transform.position);
+            Vector3i offset = new Vector3i(1, 0, 0) + (Vector3i) (transform.position - coloredCubesVolumeObj.transform.position);
             Debug.Log("offset : " + offset);
 
             currActiveVoxel = offset;// getVoxelUnderneath();
@@ -92,11 +92,11 @@ public class ProgrammableGameObjectScript : MonoBehaviour
     {
         isExecute = true;
         codePanel.SetActive(false);
-        //Debug.Log("Commands given -  ");
+        Debug.Log("Commands given -  ");
         moveToNextCommand = true;
         //bool areAllCommandsProcessed = false;
-        /*foreach (string s in commList)
-            Debug.Log(s);*/
+        foreach (string s in commList)
+            Debug.Log(s);
         
         //Debug.Log("Starting execution - ");
 

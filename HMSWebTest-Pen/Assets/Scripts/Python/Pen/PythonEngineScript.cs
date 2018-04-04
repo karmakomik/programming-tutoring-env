@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 //using IronPython;
 //using IronPython.Modules;
+
+#if UNITY_ANDROID || UNITY_STANDALONE_WIN
+
 using System.Text;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
@@ -289,3 +292,4 @@ public class PythonEngineScript : MonoBehaviour
         }
     }
 }
+#endif

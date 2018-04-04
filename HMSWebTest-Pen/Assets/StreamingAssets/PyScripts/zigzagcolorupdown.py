@@ -1,0 +1,11 @@
+for x in range(1,8):
+  haathiObject.setBlockColor("#ff0000")
+  haathiObject.placeBlock()
+  haathiObject.moveForward()
+  haathiObject.moveUp()
+  haathiObject.setBlockColor("#0000ff")
+  haathiObject.placeBlock()
+  haathiObject.moveForward()
+  haathiObject.moveDown()
+  #haathiObject.setBlockColor("#00ff00")
+  #haathiObject.placeBlock()

@@ -16,7 +16,7 @@ public class HaathiScript : MonoBehaviour
     GameObject hitBananaObj;
     int gameScore = 0;
     //public GameObject _canvas;
-    //public GameObject _browserConnect;
+    public GameObject _browserConnect;
     public GameObject _pen;
     public GameObject _player;
     public GameObject _thinkBox;
