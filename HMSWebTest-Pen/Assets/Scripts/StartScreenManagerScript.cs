@@ -20,8 +20,8 @@ public class StartScreenManagerScript : MonoBehaviour
         rotor.transform.Rotate(0, Time.deltaTime * 800, 0);
     }
 
-    public void startGame()
+    public void startGame(int level)
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(level);
     }
 }
