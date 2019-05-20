@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HMSPen.unity
     guid: d094367b7cb86a540b63e3425fd8b337
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HMSVoxelsScene.unity
     guid: 27e7b0d67d20587448cea6ec64a40123
   - enabled: 0
@@ -26,3 +26,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/OldScenes/HMSGrid.unity
     guid: 0a0c79977d22d014abf7b0a30b19664a
+  m_configObjects: {}
