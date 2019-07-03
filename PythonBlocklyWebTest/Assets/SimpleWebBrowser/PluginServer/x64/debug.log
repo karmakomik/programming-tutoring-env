@@ -1,0 +1,502 @@
+[0227/161838:INFO:user_input_monitor_win.cc(168)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/161842:ERROR:audio_output_device.cc(369)] IO loop going away before the audio device has been stopped
+[0227/161842:ERROR:audio_input_device.cc(269)] IO loop going away before the input device has been stopped
+[0227/163741.322:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/163756.015:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/163812.534:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/163816.970:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/165104.252:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/165741.013:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170132.406:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170431.307:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170436.887:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170438.201:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/170449.972:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/170452.622:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170453.974:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0227/170505.326:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0227/170506.672:INFO:user_input_monitor_win.cc(171)] RegisterRawInputDevices() failed for RIDEV_REMOVE: The parameter is incorrect. (0x57)
+[0621/112537.547:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112538.550:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112539.551:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112540.552:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112541.552:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112542.555:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112543.085:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112544.086:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112545.088:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112546.089:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112547.091:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112547.092:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112548.093:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112548.094:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112549.095:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112550.096:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112551.096:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112551.151:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112552.099:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112552.153:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112553.153:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112554.155:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112555.156:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112555.322:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112556.178:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112556.344:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112557.357:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112558.359:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112558.615:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112559.362:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112600.363:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112605.310:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112606.315:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112607.318:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112608.320:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112608.683:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112609.320:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112610.321:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112615.889:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112616.890:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112617.890:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112618.893:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112619.927:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112620.928:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112621.865:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112622.866:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112623.867:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112624.869:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112625.871:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112626.874:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112626.884:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112632.765:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112637.774:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112638.776:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112639.777:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112640.779:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112640.818:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112641.780:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112642.782:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112644.837:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112648.928:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112653.965:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112654.966:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112655.969:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112656.972:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112657.971:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112657.976:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112658.974:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112658.977:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112659.974:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112700.975:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112701.974:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112701.977:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112702.978:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112702.980:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112703.978:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112704.979:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112705.979:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112706.023:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112706.981:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112707.027:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112708.028:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112709.029:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112710.031:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112710.115:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112711.035:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112711.117:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112712.118:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112713.120:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112714.120:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112714.178:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112715.122:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112715.179:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112716.179:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112717.181:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112717.370:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112718.183:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112719.184:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112723.824:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112729.467:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112735.441:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112741.672:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112748.448:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112749.450:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112750.452:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112751.453:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112751.580:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112752.453:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112753.454:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112758.556:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112759.566:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112800.572:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112801.573:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112801.883:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112802.573:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112803.574:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112807.577:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112811.941:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112817.657:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112821.743:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112826.681:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112827.683:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112828.686:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112829.686:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112830.689:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112830.702:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112831.691:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112831.703:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112832.706:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112833.706:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112834.708:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112834.732:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112835.714:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112835.733:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112836.736:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112837.737:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112838.738:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112838.770:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112839.738:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112839.770:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112840.771:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112841.774:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112842.776:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112842.791:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112843.776:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112843.798:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112844.811:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112845.814:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112846.817:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112846.846:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112847.817:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112847.848:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112848.849:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112849.850:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112850.111:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112850.851:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112851.858:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112854.926:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112855.929:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112856.930:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112857.933:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112858.044:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112858.935:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112859.938:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112902.905:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112903.906:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112904.907:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112905.908:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112906.093:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112906.908:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112907.910:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112911.122:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112912.123:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112913.125:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112914.126:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112915.127:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112915.230:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112916.127:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112916.231:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112917.231:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112918.233:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112919.236:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112919.331:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112920.236:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112920.344:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112921.346:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112922.350:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112923.128:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112923.361:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112924.364:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112930.097:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112936.426:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112937.427:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112938.427:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112939.429:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112940.104:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112940.430:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112941.432:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112946.925:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112947.926:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112948.926:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112949.930:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112950.933:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112951.037:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112951.934:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112952.039:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112953.039:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112954.040:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112954.988:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112955.042:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112955.989:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112956.043:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112956.990:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112957.991:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112958.438:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/112958.993:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/112959.993:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113005.357:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113006.360:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113007.360:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113008.373:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113009.377:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113010.380:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113010.408:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113016.513:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113022.668:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113029.825:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113030.828:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113031.830:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113032.832:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113033.834:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113034.836:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113034.863:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113040.736:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113046.727:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113052.817:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113100.306:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113101.306:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113102.308:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113103.310:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113104.310:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113104.686:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113105.311:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113109.103:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113115.184:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113122.256:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113123.257:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113124.259:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113125.270:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113126.272:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113127.274:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113127.892:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113128.907:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113129.908:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113130.908:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113131.912:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113132.125:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113132.912:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113133.126:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113134.134:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113135.136:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113136.136:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113136.981:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113137.137:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113141.977:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113142.978:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113143.980:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113144.994:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113145.087:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113146.004:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113147.006:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113149.087:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113154.006:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113155.008:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113156.010:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113157.012:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113158.012:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113158.140:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113159.015:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113159.142:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113200.143:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113201.146:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113201.188:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113202.147:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113203.148:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113206.165:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113207.165:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113208.171:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113209.173:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113209.374:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113210.174:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113211.174:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113213.610:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113220.482:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113221.482:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113222.483:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113223.484:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113223.827:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113224.487:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113225.487:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113230.092:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113235.952:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113242.012:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113247.882:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113253.979:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113301.870:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113302.871:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113303.873:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113304.874:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113305.876:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113306.226:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113306.877:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113312.166:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113318.095:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113322.915:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113323.916:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113324.919:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113325.920:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113326.123:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113326.921:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113327.924:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113330.121:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113335.057:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113336.058:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113337.058:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113338.058:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113338.615:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113339.059:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113340.060:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113344.875:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113350.623:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113356.331:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113400.450:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113405.315:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113406.316:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113407.318:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113408.319:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113408.323:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113409.321:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113410.322:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113413.439:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113414.441:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113415.442:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113416.444:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113417.445:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113417.466:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113418.447:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113418.469:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113419.470:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113420.471:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113420.827:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113421.471:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113422.471:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113426.878:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113434.136:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113435.137:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113436.138:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113437.140:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113438.141:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113438.855:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113439.143:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113443.030:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113449.908:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113450.909:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113451.912:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113452.914:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113453.307:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113453.916:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113454.920:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113459.272:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113506.057:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113507.058:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113508.059:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113509.060:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113509.597:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113510.061:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113511.062:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113515.421:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113522.357:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113523.359:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113524.360:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113525.361:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113526.363:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113527.363:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113528.309:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113529.310:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113530.311:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113531.312:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113532.313:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113532.355:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113533.315:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113533.357:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113534.359:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113535.361:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113536.362:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113537.362:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113538.802:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113539.805:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113540.808:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113541.808:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113542.809:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113543.810:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113544.377:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113545.379:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113546.380:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113547.382:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113548.382:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113548.486:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113549.384:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113549.486:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113550.487:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113551.488:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113551.678:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113552.491:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113553.492:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113557.862:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113604.630:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113605.631:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113606.632:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113607.634:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113608.010:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113608.635:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113609.637:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113613.842:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113620.776:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113621.778:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113622.780:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113623.782:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113624.100:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113624.783:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113625.783:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113630.021:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113635.895:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113641.082:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113642.084:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113643.084:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113644.103:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113645.113:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113646.114:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113646.278:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113653.145:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113654.151:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113655.157:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113656.158:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113657.159:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113658.161:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113658.996:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113659.997:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113700.998:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113701.998:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113702.331:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113703.000:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113704.002:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113709.203:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113710.206:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113711.207:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113712.136:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113712.210:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113713.211:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113714.213:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113722.420:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113723.422:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113724.423:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113725.425:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113726.428:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113726.442:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113727.429:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113730.561:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113736.779:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113742.790:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113749.486:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113750.489:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113751.490:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113752.492:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113752.781:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113753.493:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113754.495:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113758.854:ERROR:audio_output_device.cc(425)] IO loop going away before the audio device has been stopped
+[0621/113805.785:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113806.787:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113807.788:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113808.789:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113809.791:WARNING:audio_output_device.cc(316)] Output device authorization timed out
+[0621/113810.792:WARNING:audio_output_device.cc(316)] Output device authorization timed out

@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/SimpleWebBrowser/Demo/ui_browser.unity
+  isLoaded: 1
+  isActive: 1
