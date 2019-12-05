@@ -65,7 +65,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
 
     }
 
-    public void waitSecs(object arg)
+    /*public void waitSecs(object arg)
     {
         float time = (float)arg;
         Thread.Sleep((int)time * 1000);
@@ -75,7 +75,7 @@ public class ProgrammableGameObjectScript : MonoBehaviour
         // the code that you want to measure comes here
         //watch.Stop();
         //var elapsedMs = watch.ElapsedMilliseconds;
-    }
+    }*/
 
     public void addCommandToPool(string command)
     {

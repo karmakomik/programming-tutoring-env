@@ -72,7 +72,7 @@ public class PenScript : MonoBehaviour
     {
         if (isPenDown)
         {
-            Debug.Log("rayCastToggle = true && isPenDown = true");
+            //Debug.Log("rayCastToggle = true && isPenDown = true");
             if (Physics.Raycast(controlObj.transform.position, Vector3.down, out hit, 10))
             {
                 if (hit.collider.tag.Equals("drawsurface"))

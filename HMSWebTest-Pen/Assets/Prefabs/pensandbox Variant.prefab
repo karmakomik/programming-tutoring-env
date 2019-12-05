@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7819089882829697362
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.7484975
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.2862997
+      objectReference: {fileID: 0}
+    - target: {fileID: 4909738747921314, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 114189828260302130, guid: 04a0a305b8aa5594f8a47caf0a8633e8,
+        type: 3}
+      propertyPath: controlObj
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 04a0a305b8aa5594f8a47caf0a8633e8, type: 3}

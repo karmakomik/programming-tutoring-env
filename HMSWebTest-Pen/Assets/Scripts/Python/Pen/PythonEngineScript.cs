@@ -83,6 +83,7 @@ public class PythonEngineScript : MonoBehaviour
             "import PythonEngineScript",
             "import System",
             "unity.Debug.Log(\"Python console initialized\")",
+            "unity.Debug.Log(sys.version)",
             "haathiObj = unity.GameObject.Find(\"haathi\")",
             "class Color :",
             "  red = \"#FF0000\"",
