@@ -33,14 +33,22 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
-HMSWebTest-Pen/Library/
-HMSWebTest-Pen/Temp/
 VisualBlocksUI/Library/
 HMSGridTextCommand/Library/
 HMSWebTest-Pen.rar
 HMSWebTest-Pen/Assets/Images/~$hmsgraphics.pptx
 HMSPython/Library/
 HMSWebTest-Pen/Cubiquity.log
-HMSWebTest-Pen/obj/
 HMSPython/Temp/
+HMSWebTest-Pen/[Ll]ibrary/
+HMSWebTest-Pen/[Tt]emp/
+HMSWebTest-Pen/[Oo]bj/
+HMSWebTest-Pen/[Bb]uild/
+HMSWebTest-Pen/[Bb]uilds/
+HaathiMeraSaathi_PyBlockly/[Ll]ibrary/
+HaathiMeraSaathi_PyBlockly/[Tt]emp/
+HaathiMeraSaathi_PyBlockly/[Oo]bj/
+HaathiMeraSaathi_PyBlockly/[Bb]uild/
+HaathiMeraSaathi_PyBlockly/[Bb]uilds/
+/Assets/AssetStoreTools*
 sh.exe.stackdump
